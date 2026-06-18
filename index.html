@@ -345,13 +345,36 @@
     tick();
     setInterval(tick, 60000);
 
-    // RSVP stub
-    function handleRsvp(e) {
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpzj6c_4a9gSyvQzJvk5geoezmNMLZ51IaIA0NlwRh1waHPnobJ6HyCfvWiTTOIYI/exec';
+
+    async function handleRsvp(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.textContent = 'Received — see you there!';
+      const form = e.target;
+      const btn = form.querySelector('button');
+      btn.textContent = 'Sending…';
       btn.disabled = true;
-      e.target.reset();
+
+      const data = {
+        name:      form.name.value,
+        email:     form.email.value,
+        attending: form.attending.value,
+        guests:    form.guests.value,
+        dietary:   form.dietary.value
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        btn.textContent = 'Received — see you there!';
+        form.reset();
+      } catch {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
     }
 
     // Smooth scroll
