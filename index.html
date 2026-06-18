@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex & Jordan — June 21, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f2;
+      --warm: #c9a96e;
+      --dark: #2c2c2c;
+      --muted: #7a7a7a;
+      --light: #f0ebe1;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1rem;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      border-bottom: 1px solid var(--light);
+    }
+    nav a {
+      font-family: Garamond, Georgia, serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--warm); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(201,169,110,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.08) 0%, transparent 60%),
+        var(--cream);
+    }
+    .hero-sub {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: normal;
+      line-height: 1.05;
+      color: var(--dark);
+    }
+    h1 .amp {
+      color: var(--warm);
+      font-style: italic;
+    }
+    .hero-date {
+      margin-top: 2rem;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--warm);
+      margin: 2rem auto;
+    }
+    .hero-location {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* COUNTDOWN */
+    #countdown {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+    .count-block { text-align: center; }
+    .count-num {
+      font-size: 2.5rem;
+      font-weight: normal;
+      color: var(--warm);
+      display: block;
+      line-height: 1;
+    }
+    .count-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+      font-weight: normal;
+      margin-bottom: 2rem;
+    }
+    p { line-height: 1.8; color: var(--muted); margin-bottom: 1rem; }
+
+    /* DETAILS */
+    #details { background: var(--light); max-width: 100%; padding: 6rem 2rem; }
+    #details > .inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 560px) { .detail-grid { grid-template-columns: 1fr; } }
+    .detail-card h3 {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+    .detail-card p { margin-bottom: 0.3rem; }
+
+    /* STORY */
+    .story-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--light);
+      border-radius: 4px;
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* RSVP */
+    #rsvp { background: var(--dark); max-width: 100%; padding: 6rem 2rem; color: var(--cream); }
+    #rsvp > .inner { max-width: 520px; margin: 0 auto; text-align: center; }
+    #rsvp .section-label { color: var(--warm); }
+    #rsvp h2 { color: var(--cream); }
+    #rsvp p { color: rgba(250,247,242,0.6); }
+    form { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 3px;
+      color: var(--cream);
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(250,247,242,0.35); }
+    input:focus, select:focus, textarea:focus { border-color: var(--warm); }
+    select option { background: var(--dark); }
+    textarea { resize: vertical; min-height: 90px; }
+    button[type="submit"] {
+      padding: 1rem 2.5rem;
+      background: var(--warm);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-family: Georgia, serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      align-self: center;
+    }
+    button[type="submit"]:hover { opacity: 0.85; }
+    .rsvp-note { font-size: 0.8rem; margin-top: 1rem; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--light);
+    }
+    footer span { color: var(--warm); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#story">Our Story</a>
+    <a href="#details">Details</a>
+    <a href="#rsvp">RSVP</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-sub">We're getting married</p>
+    <h1>Alex <span class="amp">&</span> Jordan</h1>
+    <p class="hero-date">June 21, 2026</p>
+    <div class="divider"></div>
+    <p class="hero-location">The Grand Vineyard · Napa Valley, California</p>
+    <div id="countdown">
+      <div class="count-block"><span class="count-num" id="cd-days">—</span><span class="count-label">Days</span></div>
+      <div class="count-block"><span class="count-num" id="cd-hours">—</span><span class="count-label">Hours</span></div>
+      <div class="count-block"><span class="count-num" id="cd-mins">—</span><span class="count-label">Minutes</span></div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story">
+    <p class="section-label">How it happened</p>
+    <h2>Our Story</h2>
+    <div class="story-img">[ photo here ]</div>
+    <p>
+      We met on a rainy Tuesday in 2019 — both reaching for the last umbrella at a corner shop
+      on 5th Ave. What started as a shared laugh turned into coffee, then dinner, then years of
+      adventures neither of us could have predicted.
+    </p>
+    <p>
+      On a quiet evening last autumn, under a sky full of stars, the question was finally asked.
+      She said yes before he finished the sentence.
+    </p>
+    <p>
+      We can't wait to celebrate with everyone we love.
+    </p>
+  </section>
+
+  <!-- DETAILS -->
+  <div id="details">
+    <div class="inner">
+      <p class="section-label">What to know</p>
+      <h2>Event Details</h2>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h3>Ceremony</h3>
+          <p>Sunday, June 21, 2026</p>
+          <p>4:00 PM</p>
+          <p style="margin-top:0.75rem;">The Grand Vineyard Chapel<br>1234 Vineyard Lane<br>Napa, CA 94558</p>
+        </div>
+        <div class="detail-card">
+          <h3>Reception</h3>
+          <p>Immediately following</p>
+          <p>6:00 PM – 11:00 PM</p>
+          <p style="margin-top:0.75rem;">The Grand Vineyard Estate<br>Cocktail hour on the terrace<br>Dinner &amp; dancing in the barn</p>
+        </div>
+        <div class="detail-card">
+          <h3>Dress Code</h3>
+          <p>Cocktail attire.</p>
+          <p>Garden ceremony — heels may sink in grass.</p>
+        </div>
+        <div class="detail-card">
+          <h3>Getting There</h3>
+          <p>Shuttle from Napa Marriott at 3:30 PM and returning at midnight.</p>
+          <p>Parking available on-site.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RSVP -->
+  <div id="rsvp">
+    <div class="inner">
+      <p class="section-label">Kindly reply by May 1, 2026</p>
+      <h2>RSVP</h2>
+      <p>Let us know you're coming so we can save you a seat.</p>
+      <form onsubmit="handleRsvp(event)">
+        <input type="text" name="name" placeholder="Full name" required />
+        <input type="email" name="email" placeholder="Email address" required />
+        <select name="attending" required>
+          <option value="" disabled selected>Will you attend?</option>
+          <option value="yes">Joyfully accepts</option>
+          <option value="no">Regretfully declines</option>
+        </select>
+        <input type="number" name="guests" placeholder="Number of guests (including yourself)" min="1" max="5" />
+        <textarea name="dietary" placeholder="Dietary restrictions or notes (optional)"></textarea>
+        <button type="submit">Send RSVP</button>
+      </form>
+      <p class="rsvp-note">Questions? Email us at <span style="color:var(--warm)">hello@alexandjordan.com</span></p>
+    </div>
+  </div>
+
+  <footer>
+    Made with <span>♡</span> for Alex &amp; Jordan · June 21, 2026
+  </footer>
+
+  <script>
+    // Countdown
+    function tick() {
+      const target = new Date('2026-06-21T16:00:00');
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<p style="color:var(--warm);font-style:italic">Today\'s the day!</p>';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      document.getElementById('cd-days').textContent = d;
+      document.getElementById('cd-hours').textContent = h;
+      document.getElementById('cd-mins').textContent = m;
+    }
+    tick();
+    setInterval(tick, 60000);
+
+    // RSVP stub
+    function handleRsvp(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Received — see you there!';
+      btn.disabled = true;
+      e.target.reset();
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
