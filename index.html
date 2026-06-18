@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex & Jordan — June 21, 2026</title>
+  <title>Diamond & Travis — May 15, 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #faf7f2;
-      --warm: #c9a96e;
-      --dark: #2c2c2c;
-      --muted: #7a7a7a;
-      --light: #f0ebe1;
+      --parchment: #f5f0e6;
+      --rust:    #a8522a;
+      --sage:    #6b8c5a;
+      --dark:    #231a10;
+      --muted:   #7a6a55;
+      --light:   #ede4d0;
+      --tan:     #c9a96e;
     }
 
     body {
-      font-family: Georgia, serif;
-      background: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--parchment);
       color: var(--dark);
     }
 
@@ -29,21 +34,21 @@
       justify-content: center;
       gap: 2.5rem;
       padding: 1rem;
-      background: rgba(250, 247, 242, 0.92);
+      background: rgba(245, 240, 230, 0.93);
       backdrop-filter: blur(6px);
       z-index: 100;
       border-bottom: 1px solid var(--light);
     }
     nav a {
-      font-family: Garamond, Georgia, serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.2s;
     }
-    nav a:hover { color: var(--warm); }
+    nav a:hover { color: var(--rust); }
 
     /* HERO */
     #hero {
@@ -55,42 +60,71 @@
       text-align: center;
       padding: 6rem 2rem 4rem;
       background:
-        radial-gradient(ellipse at 20% 80%, rgba(201,169,110,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.08) 0%, transparent 60%),
-        var(--cream);
+        radial-gradient(ellipse at 15% 85%, rgba(168,82,42,0.10) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(107,140,90,0.10) 0%, transparent 55%),
+        var(--parchment);
+      position: relative;
+      overflow: hidden;
     }
+
+    /* Subtle mountain silhouette */
+    #hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 180'%3E%3Cpath fill='%23ede4d0' fill-opacity='0.7' d='M0,180 L0,120 L80,80 L160,110 L260,50 L360,90 L440,40 L520,70 L600,20 L680,60 L760,30 L840,65 L920,25 L1000,70 L1080,45 L1160,80 L1260,55 L1360,90 L1440,70 L1440,180 Z'/%3E%3C/svg%3E") no-repeat bottom center;
+      background-size: cover;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
     .hero-sub {
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--warm);
+      color: var(--sage);
       margin-bottom: 1.5rem;
     }
     h1 {
       font-size: clamp(3rem, 10vw, 7rem);
-      font-weight: normal;
+      font-weight: 300;
       line-height: 1.05;
       color: var(--dark);
     }
     h1 .amp {
-      color: var(--warm);
+      color: var(--rust);
       font-style: italic;
     }
     .hero-date {
       margin-top: 2rem;
-      font-size: 1rem;
-      letter-spacing: 0.2em;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
       color: var(--muted);
       text-transform: uppercase;
     }
     .divider {
-      width: 60px;
-      height: 1px;
-      background: var(--warm);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       margin: 2rem auto;
+      width: fit-content;
+      color: var(--tan);
     }
+    .divider::before,
+    .divider::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--tan);
+    }
+    .divider-star { font-size: 0.7rem; }
+
     .hero-location {
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       color: var(--muted);
       font-style: italic;
     }
@@ -105,13 +139,14 @@
     .count-block { text-align: center; }
     .count-num {
       font-size: 2.5rem;
-      font-weight: normal;
-      color: var(--warm);
+      font-weight: 300;
+      color: var(--rust);
       display: block;
       line-height: 1;
     }
     .count-label {
-      font-size: 0.65rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted);
@@ -125,47 +160,50 @@
       padding: 6rem 2rem;
     }
     .section-label {
-      font-size: 0.7rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--warm);
+      color: var(--sage);
       margin-bottom: 1rem;
     }
     h2 {
-      font-size: 2.2rem;
-      font-weight: normal;
+      font-size: 2.4rem;
+      font-weight: 300;
       margin-bottom: 2rem;
     }
-    p { line-height: 1.8; color: var(--muted); margin-bottom: 1rem; }
+    p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
 
     /* DETAILS */
     #details { background: var(--light); max-width: 100%; padding: 6rem 2rem; }
-    #details > .inner {
-      max-width: 780px;
-      margin: 0 auto;
-    }
+    #details > .inner { max-width: 780px; margin: 0 auto; }
     .detail-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 2.5rem;
       margin-top: 2rem;
     }
     @media (max-width: 560px) { .detail-grid { grid-template-columns: 1fr; } }
+    .detail-card {
+      border-left: 2px solid var(--tan);
+      padding-left: 1.25rem;
+    }
     .detail-card h3 {
-      font-size: 1rem;
-      letter-spacing: 0.1em;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--dark);
+      color: var(--rust);
       margin-bottom: 0.75rem;
     }
-    .detail-card p { margin-bottom: 0.3rem; }
+    .detail-card p { margin-bottom: 0.3rem; font-size: 1rem; }
 
     /* STORY */
     .story-img {
       width: 100%;
       aspect-ratio: 4/3;
       background: var(--light);
-      border-radius: 4px;
+      border-radius: 2px;
       margin: 2rem 0;
       display: flex;
       align-items: center;
@@ -173,57 +211,59 @@
       color: var(--muted);
       font-style: italic;
       font-size: 0.9rem;
+      border: 1px solid var(--tan);
     }
 
     /* RSVP */
-    #rsvp { background: var(--dark); max-width: 100%; padding: 6rem 2rem; color: var(--cream); }
+    #rsvp { background: var(--dark); max-width: 100%; padding: 6rem 2rem; color: var(--parchment); }
     #rsvp > .inner { max-width: 520px; margin: 0 auto; text-align: center; }
-    #rsvp .section-label { color: var(--warm); }
-    #rsvp h2 { color: var(--cream); }
-    #rsvp p { color: rgba(250,247,242,0.6); }
+    #rsvp .section-label { color: var(--sage); }
+    #rsvp h2 { color: var(--parchment); }
+    #rsvp p { color: rgba(245,240,230,0.6); }
     form { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
     input, select, textarea {
       width: 100%;
       padding: 0.9rem 1rem;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 3px;
-      color: var(--cream);
-      font-family: Georgia, serif;
-      font-size: 0.95rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: 2px;
+      color: var(--parchment);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1rem;
       outline: none;
       transition: border-color 0.2s;
     }
-    input::placeholder, textarea::placeholder { color: rgba(250,247,242,0.35); }
-    input:focus, select:focus, textarea:focus { border-color: var(--warm); }
+    input::placeholder, textarea::placeholder { color: rgba(245,240,230,0.3); }
+    input:focus, select:focus, textarea:focus { border-color: var(--tan); }
     select option { background: var(--dark); }
     textarea { resize: vertical; min-height: 90px; }
     button[type="submit"] {
       padding: 1rem 2.5rem;
-      background: var(--warm);
+      background: var(--rust);
       color: #fff;
       border: none;
-      border-radius: 3px;
-      font-family: Georgia, serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
+      border-radius: 2px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       cursor: pointer;
       transition: opacity 0.2s;
       align-self: center;
     }
     button[type="submit"]:hover { opacity: 0.85; }
-    .rsvp-note { font-size: 0.8rem; margin-top: 1rem; }
+    .rsvp-note { font-size: 0.9rem; margin-top: 1rem; }
 
     /* FOOTER */
     footer {
       text-align: center;
       padding: 3rem 2rem;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--muted);
       border-top: 1px solid var(--light);
+      font-style: italic;
     }
-    footer span { color: var(--warm); }
+    footer span { color: var(--rust); }
   </style>
 </head>
 <body>
@@ -236,11 +276,11 @@
 
   <!-- HERO -->
   <section id="hero">
-    <p class="hero-sub">We're getting married</p>
-    <h1>Alex <span class="amp">&</span> Jordan</h1>
-    <p class="hero-date">June 21, 2026</p>
-    <div class="divider"></div>
-    <p class="hero-location">The Grand Vineyard · Napa Valley, California</p>
+    <p class="hero-sub">Under the high desert sky</p>
+    <h1>Diamond <span class="amp">&</span> Travis</h1>
+    <p class="hero-date">May 15, 2027</p>
+    <div class="divider"><span class="divider-star">✦</span></div>
+    <p class="hero-location">Powell Butte, Oregon</p>
     <div id="countdown">
       <div class="count-block"><span class="count-num" id="cd-days">—</span><span class="count-label">Days</span></div>
       <div class="count-block"><span class="count-num" id="cd-hours">—</span><span class="count-label">Hours</span></div>
@@ -254,16 +294,16 @@
     <h2>Our Story</h2>
     <div class="story-img">[ photo here ]</div>
     <p>
-      We met on a rainy Tuesday in 2019 — both reaching for the last umbrella at a corner shop
-      on 5th Ave. What started as a shared laugh turned into coffee, then dinner, then years of
-      adventures neither of us could have predicted.
+      We met the way good things happen in Central Oregon — slowly, honestly, out in the open air.
+      What started as a shared laugh turned into long drives down empty roads, campfires under
+      Cascade skies, and years of adventures neither of us could have predicted.
     </p>
     <p>
-      On a quiet evening last autumn, under a sky full of stars, the question was finally asked.
-      She said yes before he finished the sentence.
+      On a quiet evening last autumn, with the stars wide open overhead, the question was finally
+      asked. She said yes before he finished the sentence.
     </p>
     <p>
-      We can't wait to celebrate with everyone we love.
+      We can't wait to celebrate with everyone we love, right here in the place we call home.
     </p>
   </section>
 
@@ -275,24 +315,24 @@
       <div class="detail-grid">
         <div class="detail-card">
           <h3>Ceremony</h3>
-          <p>Sunday, June 21, 2026</p>
+          <p>Friday, May 15, 2027</p>
           <p>4:00 PM</p>
-          <p style="margin-top:0.75rem;">The Grand Vineyard Chapel<br>1234 Vineyard Lane<br>Napa, CA 94558</p>
+          <p style="margin-top:0.75rem;">Powell Butte, Oregon</p>
         </div>
         <div class="detail-card">
           <h3>Reception</h3>
           <p>Immediately following</p>
           <p>6:00 PM – 11:00 PM</p>
-          <p style="margin-top:0.75rem;">The Grand Vineyard Estate<br>Cocktail hour on the terrace<br>Dinner &amp; dancing in the barn</p>
+          <p style="margin-top:0.75rem;">Powell Butte, Oregon<br>Cocktail hour under open sky<br>Dinner &amp; dancing to follow</p>
         </div>
         <div class="detail-card">
           <h3>Dress Code</h3>
-          <p>Cocktail attire.</p>
-          <p>Garden ceremony — heels may sink in grass.</p>
+          <p>Ranch elegant.</p>
+          <p>Boots welcome. Ceremony is outdoors — dress for the high desert evening.</p>
         </div>
         <div class="detail-card">
           <h3>Getting There</h3>
-          <p>Shuttle from Napa Marriott at 3:30 PM and returning at midnight.</p>
+          <p>Powell Butte, OR — full directions to follow.</p>
           <p>Parking available on-site.</p>
         </div>
       </div>
@@ -302,9 +342,9 @@
   <!-- RSVP -->
   <div id="rsvp">
     <div class="inner">
-      <p class="section-label">Kindly reply by May 1, 2026</p>
+      <p class="section-label">Kindly reply by April 1, 2027</p>
       <h2>RSVP</h2>
-      <p>Let us know you're coming so we can save you a seat.</p>
+      <p>Let us know you're coming so we can save you a seat under the stars.</p>
       <form onsubmit="handleRsvp(event)">
         <input type="text" name="name" placeholder="Full name" required />
         <input type="email" name="email" placeholder="Email address" required />
@@ -317,22 +357,21 @@
         <textarea name="dietary" placeholder="Dietary restrictions or notes (optional)"></textarea>
         <button type="submit">Send RSVP</button>
       </form>
-      <p class="rsvp-note">Questions? Email us at <span style="color:var(--warm)">hello@alexandjordan.com</span></p>
+      <p class="rsvp-note">Questions? Email us at <span style="color:var(--tan)">hello@diamondandtravis.com</span></p>
     </div>
   </div>
 
   <footer>
-    Made with <span>♡</span> for Alex &amp; Jordan · June 21, 2026
+    Made with <span>♡</span> for Diamond &amp; Travis · May 15, 2027 · Powell Butte, Oregon
   </footer>
 
   <script>
-    // Countdown
     function tick() {
-      const target = new Date('2026-06-21T16:00:00');
+      const target = new Date('2027-05-15T16:00:00');
       const now = new Date();
       const diff = target - now;
       if (diff <= 0) {
-        document.getElementById('countdown').innerHTML = '<p style="color:var(--warm);font-style:italic">Today\'s the day!</p>';
+        document.getElementById('countdown').innerHTML = '<p style="color:var(--rust);font-style:italic">Today\'s the day!</p>';
         return;
       }
       const d = Math.floor(diff / 86400000);
@@ -377,7 +416,6 @@
       }
     }
 
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
