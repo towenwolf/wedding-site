@@ -220,39 +220,6 @@
     #rsvp .section-label { color: var(--sage); }
     #rsvp h2 { color: var(--parchment); }
     #rsvp p { color: rgba(245,240,230,0.6); }
-    form { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(201,169,110,0.3);
-      border-radius: 2px;
-      color: var(--parchment);
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    input::placeholder, textarea::placeholder { color: rgba(245,240,230,0.3); }
-    input:focus, select:focus, textarea:focus { border-color: var(--tan); }
-    select option { background: var(--dark); }
-    textarea { resize: vertical; min-height: 90px; }
-    button[type="submit"] {
-      padding: 1rem 2.5rem;
-      background: var(--rust);
-      color: #fff;
-      border: none;
-      border-radius: 2px;
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      align-self: center;
-    }
-    button[type="submit"]:hover { opacity: 0.85; }
-    .rsvp-note { font-size: 0.9rem; margin-top: 1rem; }
 
     /* FOOTER */
     footer {
@@ -271,7 +238,6 @@
   <nav>
     <a href="#story">Our Story</a>
     <a href="#details">Details</a>
-    <a href="#rsvp">RSVP</a>
   </nav>
 
   <!-- HERO -->
@@ -315,7 +281,7 @@
       <div class="detail-grid">
         <div class="detail-card">
           <h3>Ceremony</h3>
-          <p>Friday, May 15, 2027</p>
+          <p>Saturday, May 15, 2027</p>
           <p>4:00 PM</p>
           <p style="margin-top:0.75rem;">Powell Butte, Oregon</p>
         </div>
@@ -327,8 +293,8 @@
         </div>
         <div class="detail-card">
           <h3>Dress Code</h3>
-          <p>Ranch elegant.</p>
-          <p>Boots welcome. Ceremony is outdoors — dress for the high desert evening.</p>
+          <p>Black tie.</p>
+          <p>Ceremony is outdoors — dress for the high desert evening.</p>
         </div>
         <div class="detail-card">
           <h3>Getting There</h3>
@@ -336,28 +302,6 @@
           <p>Parking available on-site.</p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- RSVP -->
-  <div id="rsvp">
-    <div class="inner">
-      <p class="section-label">Kindly reply by April 1, 2027</p>
-      <h2>RSVP</h2>
-      <p>Let us know you're coming so we can save you a seat under the stars.</p>
-      <form onsubmit="handleRsvp(event)">
-        <input type="text" name="name" placeholder="Full name" required />
-        <input type="email" name="email" placeholder="Email address" required />
-        <select name="attending" required>
-          <option value="" disabled selected>Will you attend?</option>
-          <option value="yes">Joyfully accepts</option>
-          <option value="no">Regretfully declines</option>
-        </select>
-        <input type="number" name="guests" placeholder="Number of guests (including yourself)" min="1" max="5" />
-        <textarea name="dietary" placeholder="Dietary restrictions or notes (optional)"></textarea>
-        <button type="submit">Send RSVP</button>
-      </form>
-      <p class="rsvp-note">Questions? Email us at <span style="color:var(--tan)">hello@diamondandtravis.com</span></p>
     </div>
   </div>
 
@@ -383,38 +327,6 @@
     }
     tick();
     setInterval(tick, 60000);
-
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpzj6c_4a9gSyvQzJvk5geoezmNMLZ51IaIA0NlwRh1waHPnobJ6HyCfvWiTTOIYI/exec';
-
-    async function handleRsvp(e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('button');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-
-      const data = {
-        name:      form.name.value,
-        email:     form.email.value,
-        attending: form.attending.value,
-        guests:    form.guests.value,
-        dietary:   form.dietary.value
-      };
-
-      try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        btn.textContent = 'Received — see you there!';
-        form.reset();
-      } catch {
-        btn.textContent = 'Something went wrong — try again';
-        btn.disabled = false;
-      }
-    }
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
