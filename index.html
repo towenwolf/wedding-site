@@ -14,6 +14,7 @@
     :root {
       --parchment: #f5f0e6;
       --rust:    #a8522a;
+      --ember:   #c47a2a;
       --sage:    #6b8c5a;
       --dark:    #231a10;
       --muted:   #635444;
@@ -66,8 +67,7 @@
       text-align: center;
       padding: 6rem 2rem 4rem;
       background:
-        radial-gradient(ellipse at 15% 85%, rgba(168,82,42,0.10) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 15%, rgba(107,140,90,0.10) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 110%, rgba(196,122,42,0.18) 0%, rgba(168,82,42,0.08) 40%, transparent 70%),
         var(--parchment);
       position: relative;
       overflow: hidden;
@@ -116,7 +116,7 @@
       gap: 0.75rem;
       margin: 2rem auto;
       width: fit-content;
-      color: var(--tan);
+      color: var(--ember);
     }
     .divider::before,
     .divider::after {
@@ -124,7 +124,7 @@
       display: block;
       width: 40px;
       height: 1px;
-      background: var(--tan);
+      background: var(--ember);
     }
     .divider-star { font-size: 0.7rem; }
 
@@ -167,7 +167,7 @@
     .section-label {
       font-family: 'Josefin Sans', sans-serif;
       font-size: 0.65rem;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--sage);
       margin-bottom: 1rem;
