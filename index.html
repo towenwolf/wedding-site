@@ -214,6 +214,17 @@
       border: 1px solid var(--tan);
     }
 
+    /* FAQ */
+    .faq-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 2rem; }
+    .faq-item h3 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.5rem;
+    }
+
     /* RSVP */
     #rsvp { background: var(--dark); max-width: 100%; padding: 6rem 2rem; color: var(--parchment); }
     #rsvp > .inner { max-width: 520px; margin: 0 auto; text-align: center; }
@@ -238,6 +249,7 @@
   <nav>
     <a href="#story">Our Story</a>
     <a href="#details">Details</a>
+    <a href="#faq">FAQ</a>
   </nav>
 
   <!-- HERO -->
@@ -304,6 +316,30 @@
       </div>
     </div>
   </div>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <p class="section-label">Good to know</p>
+    <h2>FAQ</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What's the dress code?</h3>
+        <p>Black tie. The ceremony is outdoors in the high desert — we recommend layers for the evening and comfortable footwear for the terrain.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I bring a plus-one?</h3>
+        <p>Your invitation will indicate whether your plus-one is included. If you have questions, feel free to reach out before RSVPing.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Are children welcome?</h3>
+        <p>We love your little ones — please reach out and we'll let you know what works best for the evening.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Where should I stay?</h3>
+        <p>Accommodation recommendations are coming soon. Central Oregon has wonderful options in Bend and Redmond, both a short drive from Powell Butte.</p>
+      </div>
+    </div>
+  </section>
 
   <footer>
     Made with <span>♡</span> for Diamond &amp; Travis · May 15, 2027 · Powell Butte, Oregon
