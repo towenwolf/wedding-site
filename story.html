@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story — Diamond & Travis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --parchment: #f2ecd9;
+      --rust:    #7a4426;
+      --ember:   #c9982f;
+      --sage:    #3f5c42;
+      --dark:    #22281d;
+      --muted:   #57544a;
+      --light:   #e6e3cf;
+      --tan:     #a9895a;
+      --pine:    #2f4a3a;
+    }
+
+    body {
+      font-family: 'Bitter', Georgia, serif;
+      background: var(--parchment);
+      color: var(--dark);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
+      padding: 0 1rem;
+      background: rgba(242, 236, 217, 0.94);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      border-bottom: 2px solid var(--pine);
+    }
+    nav a {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pine);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 0.5rem;
+    }
+    nav a:hover { color: var(--rust); }
+    nav a.current { color: var(--rust); }
+    nav .nav-rsvp {
+      margin-left: 0.5rem;
+      padding: 0.4rem 1.1rem !important;
+      border: 1.5px solid currentColor;
+      border-radius: 2px;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+    .section-rule {
+      max-width: 780px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid var(--tan);
+    }
+    .section-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
+
+    /* STORY HEADER */
+    #story-header {
+      padding: 9rem 2rem 3rem;
+      text-align: center;
+    }
+    #story-header h2 { margin-bottom: 0; }
+
+    /* STORY */
+    .story-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--light);
+      border-radius: 2px;
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.9rem;
+      border: 1px solid var(--tan);
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rust);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--pine); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 2px solid var(--pine);
+      font-style: italic;
+    }
+    footer span { color: var(--rust); }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="story.html" class="current">Our Story</a>
+    <a href="index.html#details">Details</a>
+    <a href="index.html#travel">Travel &amp; Stay</a>
+    <a href="index.html#registry">Registry</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#rsvp" class="nav-rsvp">RSVP</a>
+  </nav>
+
+  <!-- STORY HEADER -->
+  <section id="story-header">
+    <p class="section-label">How it happened</p>
+    <h2>Our Story</h2>
+  </section>
+
+  <!-- STORY -->
+  <section id="story">
+    <div class="story-img">[ photo here ]</div>
+    <p>
+      We met the way good things happen in Central Oregon — slowly, honestly, out in the open air.
+      What started as a shared laugh turned into long drives down empty roads, campfires under
+      Cascade skies, and years of adventures neither of us could have predicted.
+    </p>
+    <p>
+      On a quiet evening last autumn, with the stars wide open overhead, the question was finally
+      asked. She said yes before he finished the sentence.
+    </p>
+    <p>
+      We can't wait to celebrate with everyone we love, right here in the place we call home.
+    </p>
+    <a href="index.html" class="back-link">&larr; Back to home</a>
+  </section>
+
+  <footer>
+    Made with <span>♡</span> for Diamond &amp; Travis · May 15, 2027 · Powell Butte, Oregon
+  </footer>
+
+</body>
+</html>
