@@ -7,23 +7,24 @@
   <title>Diamond & Travis — May 15, 2027</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --parchment: #f5f0e6;
-      --rust:    #a8522a;
-      --ember:   #c47a2a;
-      --sage:    #6b8c5a;
-      --dark:    #231a10;
-      --muted:   #635444;
-      --light:   #ede4d0;
-      --tan:     #c9a96e;
+      --parchment: #f2ecd9;
+      --rust:    #7a4426;
+      --ember:   #c9982f;
+      --sage:    #3f5c42;
+      --dark:    #22281d;
+      --muted:   #57544a;
+      --light:   #e6e3cf;
+      --tan:     #a9895a;
+      --pine:    #2f4a3a;
     }
 
     body {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-family: 'Bitter', Georgia, serif;
       background: var(--parchment);
       color: var(--dark);
     }
@@ -37,17 +38,18 @@
       flex-wrap: wrap;
       gap: 0 1.5rem;
       padding: 0 1rem;
-      background: rgba(245, 240, 230, 0.93);
+      background: rgba(242, 236, 217, 0.94);
       backdrop-filter: blur(6px);
       z-index: 100;
-      border-bottom: 1px solid var(--light);
+      border-bottom: 2px solid var(--pine);
     }
     nav a {
       font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--pine);
       text-decoration: none;
       transition: color 0.2s;
       display: flex;
@@ -67,19 +69,19 @@
       text-align: center;
       padding: 6rem 2rem 4rem;
       background:
-        radial-gradient(ellipse at 50% 110%, rgba(196,122,42,0.18) 0%, rgba(168,82,42,0.08) 40%, transparent 70%),
+        radial-gradient(ellipse at 50% 110%, rgba(63,92,66,0.16) 0%, rgba(47,74,58,0.08) 40%, transparent 70%),
         var(--parchment);
       position: relative;
       overflow: hidden;
     }
 
-    /* Mountain silhouette */
+    /* Pine ridge + treeline silhouette */
     #hero::before {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 260px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 260'%3E%3Cpath fill='%23231a10' fill-opacity='0.08' d='M0,260 L0,200 L60,170 L120,190 L200,130 L280,160 L360,90 L440,130 L500,70 L560,110 L620,50 L680,85 L740,30 L800,70 L860,20 L920,55 L980,35 L1040,75 L1100,45 L1160,80 L1220,55 L1300,95 L1380,70 L1440,100 L1440,260 Z'/%3E%3Cpath fill='%23231a10' fill-opacity='0.05' d='M0,260 L0,220 L80,195 L160,210 L240,175 L320,195 L400,155 L480,180 L560,145 L640,165 L720,130 L800,155 L880,120 L960,148 L1040,125 L1120,150 L1200,130 L1280,155 L1360,140 L1440,160 L1440,260 Z'/%3E%3C/svg%3E") no-repeat bottom center;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 260'%3E%3Cpath fill='%232f4a3a' fill-opacity='0.10' d='M0,260 L0,200 L60,170 L120,190 L200,130 L280,160 L360,90 L440,130 L500,70 L560,110 L620,50 L680,85 L740,30 L800,70 L860,20 L920,55 L980,35 L1040,75 L1100,45 L1160,80 L1220,55 L1300,95 L1380,70 L1440,100 L1440,260 Z'/%3E%3Cpath fill='%231b2f26' fill-opacity='0.16' d='M0,260 L0,220 L80,195 L160,210 L240,175 L320,195 L400,155 L480,180 L560,145 L640,165 L720,130 L800,155 L880,120 L960,148 L1040,125 L1120,150 L1200,130 L1280,155 L1360,140 L1440,160 L1440,260 Z'/%3E%3Cpath fill='%231b2f26' fill-opacity='0.22' d='M0,260 L12,222 L19,239 L24,260 Z M34,260 L46,228 L53,242 L58,260 Z M68,260 L80,230 L87,244 L92,260 Z M102,260 L114,234 L121,246 L126,260 Z M136,260 L148,234 L155,246 L160,260 Z M170,260 L182,234 L189,246 L194,260 Z M204,260 L216,222 L223,239 L228,260 Z M238,260 L250,234 L257,246 L262,260 Z M272,260 L284,228 L291,242 L296,260 Z M306,260 L318,234 L325,246 L330,260 Z M340,260 L352,234 L359,246 L364,260 Z M374,260 L386,230 L393,244 L398,260 Z M408,260 L420,230 L427,244 L432,260 Z M442,260 L454,234 L461,246 L466,260 Z M476,260 L488,228 L495,242 L500,260 Z M510,260 L522,234 L529,246 L534,260 Z M544,260 L556,230 L563,244 L568,260 Z M578,260 L590,234 L597,246 L602,260 Z M612,260 L624,234 L631,246 L636,260 Z M646,260 L658,228 L665,242 L670,260 Z M680,260 L692,234 L699,246 L704,260 Z M714,260 L726,230 L733,244 L738,260 Z M748,260 L760,234 L767,246 L772,260 Z M782,260 L794,228 L801,242 L806,260 Z M816,260 L828,234 L835,246 L840,260 Z M850,260 L862,228 L869,242 L874,260 Z M884,260 L896,222 L903,239 L908,260 Z M918,260 L930,230 L937,244 L942,260 Z M952,260 L964,228 L971,242 L976,260 Z M986,260 L998,234 L1005,246 L1010,260 Z M1020,260 L1032,222 L1039,239 L1044,260 Z M1054,260 L1066,228 L1073,242 L1078,260 Z M1088,260 L1100,234 L1107,246 L1112,260 Z M1122,260 L1134,228 L1141,242 L1146,260 Z M1156,260 L1168,222 L1175,239 L1180,260 Z M1190,260 L1202,234 L1209,246 L1214,260 Z M1224,260 L1236,234 L1243,246 L1248,260 Z M1258,260 L1270,234 L1277,246 L1282,260 Z M1292,260 L1304,228 L1311,242 L1316,260 Z M1326,260 L1338,230 L1345,244 L1350,260 Z M1360,260 L1372,230 L1379,244 L1384,260 Z M1394,260 L1406,222 L1413,239 L1418,260 Z M1428,260 L1440,230 L1447,244 L1452,260 Z M1462,260 L1474,230 L1481,244 L1486,260 Z'/%3E%3C/svg%3E") no-repeat bottom center;
       background-size: cover;
       pointer-events: none;
     }
@@ -94,13 +96,15 @@
     }
     h1 {
       font-size: clamp(3rem, 10vw, 7rem);
-      font-weight: 300;
+      font-weight: 700;
       line-height: 1.05;
       color: var(--dark);
+      letter-spacing: -0.01em;
     }
     h1 .amp {
       color: var(--rust);
       font-style: italic;
+      font-weight: 400;
     }
     .hero-date {
       margin-top: 2rem;
@@ -116,17 +120,18 @@
       gap: 0.75rem;
       margin: 2rem auto;
       width: fit-content;
-      color: var(--ember);
+      color: var(--pine);
     }
     .divider::before,
     .divider::after {
       content: '';
       display: block;
       width: 40px;
-      height: 1px;
+      height: 2px;
       background: var(--ember);
     }
-    .divider-star { font-size: 0.7rem; }
+    .divider-star { display: flex; color: var(--ember); }
+    .divider-star svg { width: 18px; height: 18px; display: block; }
 
     .hero-location {
       font-size: 1.1rem;
@@ -144,7 +149,7 @@
     .count-block { text-align: center; }
     .count-num {
       font-size: 2.5rem;
-      font-weight: 300;
+      font-weight: 700;
       color: var(--rust);
       display: block;
       line-height: 1;
@@ -174,7 +179,7 @@
     }
     h2 {
       font-size: 2.4rem;
-      font-weight: 300;
+      font-weight: 700;
       margin-bottom: 2rem;
     }
     p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
@@ -199,7 +204,7 @@
       #countdown { margin-top: 2rem; }
     }
     .detail-card {
-      border-left: 2px solid var(--tan);
+      border-left: 3px solid var(--pine);
       padding-left: 1.25rem;
     }
     .detail-card h3 {
@@ -245,7 +250,7 @@
       padding: 3rem 2rem;
       font-size: 0.85rem;
       color: var(--muted);
-      border-top: 1px solid var(--light);
+      border-top: 2px solid var(--pine);
       font-style: italic;
     }
     footer span { color: var(--rust); }
@@ -264,7 +269,7 @@
     <p class="hero-sub">Under the high desert sky</p>
     <h1>Diamond <span class="amp">&</span> Travis</h1>
     <p class="hero-date">May 15, 2027</p>
-    <div class="divider"><span class="divider-star">✦</span></div>
+    <div class="divider"><span class="divider-star"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L6.5 10h3L4.5 18h5V23h5v-5h5l-5-8h3z"/></svg></span></div>
     <p class="hero-location">Powell Butte, Oregon</p>
     <div id="countdown">
       <div class="count-block"><span class="count-num" id="cd-days">—</span><span class="count-label">Days</span></div>
