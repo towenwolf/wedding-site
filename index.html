@@ -189,6 +189,15 @@
       margin-top: 2rem;
     }
     @media (max-width: 560px) { .detail-grid { grid-template-columns: 1fr; } }
+
+    /* Tighten hero whitespace on wider viewports */
+    @media (min-width: 769px) {
+      #hero { min-height: auto; padding: 5rem 2rem 4rem; }
+      .hero-sub { margin-bottom: 1rem; }
+      .divider { margin: 1.25rem auto; }
+      .hero-date { margin-top: 1.25rem; }
+      #countdown { margin-top: 2rem; }
+    }
     .detail-card {
       border-left: 2px solid var(--tan);
       padding-left: 1.25rem;
