@@ -34,13 +34,19 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       display: flex;
+      align-items: center;
       justify-content: center;
       flex-wrap: wrap;
       gap: 0 1.5rem;
       padding: 0 1rem;
+      background: transparent;
+      z-index: 100;
+      transition: background 0.3s, border-color 0.3s;
+      border-bottom: 2px solid transparent;
+    }
+    nav.solid {
       background: rgba(242, 236, 217, 0.94);
       backdrop-filter: blur(6px);
-      z-index: 100;
       border-bottom: 2px solid var(--pine);
     }
     nav a {
@@ -57,7 +63,14 @@
       min-height: 44px;
       padding: 0 0.5rem;
     }
+    nav.transparent a { color: var(--parchment); }
     nav a:hover { color: var(--rust); }
+    nav .nav-rsvp {
+      margin-left: 0.5rem;
+      padding: 0.4rem 1.1rem !important;
+      border: 1.5px solid currentColor;
+      border-radius: 2px;
+    }
 
     /* HERO */
     #hero {
@@ -69,8 +82,9 @@
       text-align: center;
       padding: 6rem 2rem 4rem;
       background:
+        linear-gradient(180deg, rgba(34,40,29,0.15) 0%, rgba(34,40,29,0.05) 30%, rgba(242,236,217,0.55) 75%, var(--parchment) 100%),
         radial-gradient(ellipse at 50% 110%, rgba(63,92,66,0.16) 0%, rgba(47,74,58,0.08) 40%, transparent 70%),
-        var(--parchment);
+        linear-gradient(180deg, #dce7dc 0%, var(--parchment) 55%);
       position: relative;
       overflow: hidden;
     }
@@ -169,6 +183,12 @@
       margin: 0 auto;
       padding: 6rem 2rem;
     }
+    .section-rule {
+      max-width: 780px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid var(--tan);
+    }
     .section-label {
       font-family: 'Josefin Sans', sans-serif;
       font-size: 0.65rem;
@@ -185,7 +205,7 @@
     p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
 
     /* DETAILS */
-    #details { background: var(--light); max-width: 100%; padding: 6rem 2rem; }
+    #details { max-width: 100%; padding: 6rem 2rem; }
     #details > .inner { max-width: 780px; margin: 0 auto; }
     .detail-grid {
       display: grid;
@@ -233,6 +253,57 @@
       border: 1px solid var(--tan);
     }
 
+    /* TRAVEL */
+    .stay-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 560px) { .stay-grid { grid-template-columns: 1fr; } }
+    .map-embed {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--light);
+      border-radius: 2px;
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.9rem;
+      border: 1px solid var(--tan);
+    }
+
+    /* REGISTRY */
+    .registry-note {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.9rem 2.2rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      background: var(--rust);
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--pine); }
+
+    /* RSVP */
+    #rsvp {
+      text-align: center;
+      padding-bottom: 7rem;
+    }
+
     /* FAQ */
     .faq-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 2rem; }
     .faq-item h3 {
@@ -258,10 +329,13 @@
 </head>
 <body>
 
-  <nav>
+  <nav id="nav" class="transparent">
     <a href="#story">Our Story</a>
     <a href="#details">Details</a>
+    <a href="#travel">Travel &amp; Stay</a>
+    <a href="#registry">Registry</a>
     <a href="#faq">FAQ</a>
+    <a href="#rsvp" class="nav-rsvp">RSVP</a>
   </nav>
 
   <!-- HERO -->
@@ -277,6 +351,8 @@
       <div class="count-block"><span class="count-num" id="cd-mins">—</span><span class="count-label">Minutes</span></div>
     </div>
   </section>
+
+  <hr class="section-rule">
 
   <!-- STORY -->
   <section id="story">
@@ -296,6 +372,8 @@
       We can't wait to celebrate with everyone we love, right here in the place we call home.
     </p>
   </section>
+
+  <hr class="section-rule">
 
   <!-- DETAILS -->
   <div id="details">
@@ -324,6 +402,41 @@
     </div>
   </div>
 
+  <hr class="section-rule">
+
+  <!-- TRAVEL & STAY -->
+  <section id="travel">
+    <p class="section-label">Getting here</p>
+    <h2>Travel &amp; Stay</h2>
+    <div class="stay-grid">
+      <div class="detail-card">
+        <h3>Where to Stay</h3>
+        <p>Bend and Redmond both offer a range of hotels a short drive from Powell Butte.</p>
+        <p>A room block will be posted here once finalized.</p>
+      </div>
+      <div class="detail-card">
+        <h3>Getting Around</h3>
+        <p>Renting a car is recommended — rideshare coverage is limited in this area.</p>
+        <p>Parking is available on-site at the venue.</p>
+      </div>
+    </div>
+    <div class="map-embed">[ map coming soon ]</div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- REGISTRY -->
+  <section id="registry">
+    <p class="section-label">If you'd like</p>
+    <h2>Registry</h2>
+    <div class="registry-note">
+      <p>Your presence is truly the only gift we need. For those who've asked, a registry will be linked here.</p>
+      <a href="#" class="btn">View Registry</a>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
   <!-- FAQ -->
   <section id="faq">
     <p class="section-label">Good to know</p>
@@ -346,6 +459,16 @@
         <p>Accommodation recommendations are coming soon. Central Oregon has wonderful options in Bend and Redmond, both a short drive from Powell Butte.</p>
       </div>
     </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <p class="section-label">Kindly respond</p>
+    <h2>RSVP</h2>
+    <p>We can't wait to celebrate with you — please let us know if you'll be joining us.</p>
+    <a href="#" class="btn">RSVP Now</a>
   </section>
 
   <footer>
@@ -373,10 +496,23 @@
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
         e.preventDefault();
-        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    const nav = document.getElementById('nav');
+    const hero = document.getElementById('hero');
+    function updateNav() {
+      const scrolledPastHero = window.scrollY > hero.offsetHeight - 80;
+      nav.classList.toggle('solid', scrolledPastHero);
+      nav.classList.toggle('transparent', !scrolledPastHero);
+    }
+    updateNav();
+    window.addEventListener('scroll', updateNav);
+    window.addEventListener('resize', updateNav);
   </script>
 
 </body>
