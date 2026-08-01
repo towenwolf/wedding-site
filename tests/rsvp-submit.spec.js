@@ -15,29 +15,31 @@ test('a guest can fill out and submit the RSVP form', async ({ page }) => {
     .locator('input[type="text"]')
     .fill('Test Guest (automated Playwright test)');
 
-  await frame
+  const attendCheckbox = frame
     .locator('[role="listitem"]', { hasText: 'Which will you attend?' })
-    .getByRole('checkbox', { name: 'Wedding (ceremony & reception)' })
-    .check();
+    .getByRole('checkbox', { name: 'Wedding (ceremony & reception)' });
+  await attendCheckbox.click();
+  await expect(attendCheckbox).toHaveAttribute('aria-checked', 'true');
 
   await frame
     .locator('[role="listitem"]', { hasText: 'Number in party' })
     .locator('input[type="text"]')
     .fill('1');
 
-  await frame
+  const mealRadio = frame
     .locator('[role="listitem"]', { hasText: 'Meal Choice' })
-    .getByRole('radio', { name: 'Option 1' })
-    .check();
+    .getByRole('radio', { name: 'Option 1' });
+  await mealRadio.click();
+  await expect(mealRadio).toHaveAttribute('aria-checked', 'true');
 
   await frame
     .locator('[role="listitem"]', { hasText: 'Dietary needs' })
-    .locator('input[type="text"]')
+    .locator('input[type="text"], textarea')
     .fill('None');
 
   await frame
     .locator('[role="listitem"]', { hasText: 'Note to couple' })
-    .locator('input[type="text"]')
+    .locator('input[type="text"], textarea')
     .fill('TEST SUBMISSION — please delete this row (automated Playwright test)');
 
   await frame.getByRole('button', { name: 'Submit' }).click();
