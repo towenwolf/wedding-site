@@ -303,6 +303,19 @@
       text-align: center;
       padding-bottom: 7rem;
     }
+    .rsvp-frame {
+      display: block;
+      width: 100%;
+      max-width: 640px;
+      height: 1259px;
+      margin: 2rem auto 0;
+      border: none;
+    }
+    .rsvp-fallback {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
 
     /* FAQ */
     .faq-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 2rem; }
@@ -447,7 +460,8 @@
     <p class="section-label">Kindly respond</p>
     <h2>RSVP</h2>
     <p>We can't wait to celebrate with you — please let us know if you'll be joining us.</p>
-    <a href="#" class="btn">RSVP Now</a>
+    <iframe class="rsvp-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <p class="rsvp-fallback">Having trouble? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform" target="_blank" rel="noopener">Open the RSVP form directly</a>.</p>
   </section>
 
   <footer>
