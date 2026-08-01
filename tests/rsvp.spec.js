@@ -4,7 +4,7 @@ const FORM_ID = '1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg';
 
 test.describe('RSVP section', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/#rsvp');
+    await page.goto('/rsvp.html');
   });
 
   test('embeds the Google Form with the correct ID', async ({ page }) => {
@@ -40,4 +40,10 @@ test.describe('RSVP section', () => {
     const viewport = page.viewportSize();
     expect(box.width).toBeLessThanOrEqual(viewport.width);
   });
+});
+
+test('homepage nav links to the RSVP page', async ({ page }) => {
+  await page.goto('/index.html');
+  await page.locator('a.nav-rsvp').click();
+  await expect(page).toHaveURL(/rsvp\.html$/);
 });

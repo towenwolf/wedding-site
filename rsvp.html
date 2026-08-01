@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Story — Diamond & Travis</title>
+  <title>RSVP — Diamond & Travis</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -73,12 +73,6 @@
       margin: 0 auto;
       padding: 6rem 2rem;
     }
-    .section-rule {
-      max-width: 780px;
-      margin: 0 auto;
-      border: none;
-      border-top: 1px solid var(--tan);
-    }
     .section-label {
       font-family: 'Josefin Sans', sans-serif;
       font-size: 0.65rem;
@@ -94,27 +88,31 @@
     }
     p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
 
-    /* STORY HEADER */
-    #story-header {
+    /* RSVP HEADER */
+    #rsvp-header {
       padding: 9rem 2rem 3rem;
       text-align: center;
     }
-    #story-header h2 { margin-bottom: 0; }
+    #rsvp-header h2 { margin-bottom: 0; }
 
-    /* STORY */
-    .story-img {
+    /* RSVP */
+    #rsvp {
+      text-align: center;
+      padding-top: 0;
+      padding-bottom: 4rem;
+    }
+    .rsvp-frame {
+      display: block;
       width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--light);
-      border-radius: 2px;
-      margin: 2rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-style: italic;
+      max-width: 640px;
+      height: 1259px;
+      margin: 2rem auto 0;
+      border: none;
+    }
+    .rsvp-fallback {
+      margin-top: 1rem;
       font-size: 0.9rem;
-      border: 1px solid var(--tan);
+      color: var(--muted);
     }
     .back-link {
       display: inline-block;
@@ -143,35 +141,26 @@
 <body>
 
   <nav id="nav">
-    <a href="story.html" class="current">Our Story</a>
+    <a href="index.html">Home</a>
+    <a href="story.html">Our Story</a>
     <a href="index.html#details">Details</a>
     <a href="index.html#travel">Travel &amp; Stay</a>
     <a href="index.html#registry">Registry</a>
     <a href="index.html#faq">FAQ</a>
-    <a href="rsvp.html" class="nav-rsvp">RSVP</a>
+    <a href="rsvp.html" class="nav-rsvp current">RSVP</a>
   </nav>
 
-  <!-- STORY HEADER -->
-  <section id="story-header">
-    <p class="section-label">How it happened</p>
-    <h2>Our Story</h2>
+  <!-- RSVP HEADER -->
+  <section id="rsvp-header">
+    <p class="section-label">Kindly respond</p>
+    <h2>RSVP</h2>
+    <p>We can't wait to celebrate with you — please let us know if you'll be joining us.</p>
   </section>
 
-  <!-- STORY -->
-  <section id="story">
-    <div class="story-img">[ photo here ]</div>
-    <p>
-      We met the way good things happen in Central Oregon — slowly, honestly, out in the open air.
-      What started as a shared laugh turned into long drives down empty roads, campfires under
-      Cascade skies, and years of adventures neither of us could have predicted.
-    </p>
-    <p>
-      On a quiet evening last autumn, with the stars wide open overhead, the question was finally
-      asked. She said yes before he finished the sentence.
-    </p>
-    <p>
-      We can't wait to celebrate with everyone we love, right here in the place we call home.
-    </p>
+  <!-- RSVP -->
+  <section id="rsvp">
+    <iframe class="rsvp-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <p class="rsvp-fallback">Having trouble? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform" target="_blank" rel="noopener">Open the RSVP form directly</a>.</p>
     <a href="index.html" class="back-link">&larr; Back to home</a>
   </section>
 
