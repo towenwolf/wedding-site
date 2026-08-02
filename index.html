@@ -40,21 +40,16 @@
       flex-wrap: wrap;
       gap: 0 1.5rem;
       padding: 0 1rem;
-      background: transparent;
-      z-index: 100;
-      transition: background 0.3s, border-color 0.3s;
-      border-bottom: 2px solid transparent;
-    }
-    nav.solid {
       background: rgba(242, 236, 217, 0.94);
       backdrop-filter: blur(6px);
+      z-index: 100;
       border-bottom: 2px solid var(--pine);
     }
     nav a {
       font-family: 'Josefin Sans', sans-serif;
-      font-weight: 600;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      font-weight: 400;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--pine);
       text-decoration: none;
@@ -64,7 +59,6 @@
       min-height: 44px;
       padding: 0 0.5rem;
     }
-    nav.transparent a { color: var(--parchment); }
     nav a:hover { color: var(--rust); }
     nav .nav-rsvp {
       margin-left: 0.5rem;
@@ -327,7 +321,7 @@
 </head>
 <body>
 
-  <nav id="nav" class="transparent">
+  <nav id="nav">
     <a href="story.html">Our Story</a>
     <a href="#details">Details</a>
     <a href="#travel">Travel &amp; Stay</a>
@@ -469,17 +463,6 @@
         target.scrollIntoView({ behavior: 'smooth' });
       });
     });
-
-    const nav = document.getElementById('nav');
-    const hero = document.getElementById('hero');
-    function updateNav() {
-      const scrolledPastHero = window.scrollY > hero.offsetHeight - 80;
-      nav.classList.toggle('solid', scrolledPastHero);
-      nav.classList.toggle('transparent', !scrolledPastHero);
-    }
-    updateNav();
-    window.addEventListener('scroll', updateNav);
-    window.addEventListener('resize', updateNav);
   </script>
 
 </body>
