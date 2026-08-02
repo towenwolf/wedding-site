@@ -251,29 +251,6 @@
       border: 1px solid var(--tan);
     }
 
-    /* TRAVEL */
-    .stay-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 560px) { .stay-grid { grid-template-columns: 1fr; } }
-    .map-embed {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--light);
-      border-radius: 2px;
-      margin-top: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-style: italic;
-      font-size: 0.9rem;
-      border: 1px solid var(--tan);
-    }
-
     /* REGISTRY */
     .registry-note {
       text-align: center;
@@ -324,7 +301,6 @@
   <nav id="nav">
     <a href="story.html">Our Story</a>
     <a href="#details">Details</a>
-    <a href="#travel">Travel &amp; Stay</a>
     <a href="#registry">Registry</a>
     <a href="#faq">FAQ</a>
     <a href="rsvp.html" class="nav-rsvp">RSVP</a>
@@ -375,28 +351,6 @@
 
   <hr class="section-rule">
 
-  <!-- TRAVEL & STAY -->
-  <section id="travel">
-    <p class="section-label">Getting here</p>
-    <h2>Travel &amp; Stay</h2>
-    <div class="stay-grid">
-      <div class="detail-card">
-        <h3>Where to Stay</h3>
-        <p>We recommend staying on-site at <strong>Brasada Resort</strong>.</p>
-        <p>A discount code for wedding party guests will be posted here once finalized.</p>
-      </div>
-      <div class="detail-card">
-        <h3>Getting Around</h3>
-        <p>Rental cars are available at the airport, though not necessary if you're staying at Brasada Resort.</p>
-        <p>Uber is also available — about a 15-minute ride from the airport.</p>
-        <p>Parking is available on-site at the venue.</p>
-      </div>
-    </div>
-    <div class="map-embed">[ map coming soon ]</div>
-  </section>
-
-  <hr class="section-rule">
-
   <!-- REGISTRY -->
   <section id="registry">
     <p class="section-label">If you'd like</p>
@@ -429,6 +383,14 @@
       <div class="faq-item">
         <h3>Where should I stay?</h3>
         <p>We recommend staying on-site at Brasada Resort. A discount code will be available for all guests with the wedding party — details coming soon.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Should I rent a car?</h3>
+        <p>Rental cars are available at the airport, though not necessary if you're staying at Brasada Resort.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I take an Uber?</h3>
+        <p>Yes — Uber is available and it's about a 15-minute ride from the airport.</p>
       </div>
     </div>
   </section>
