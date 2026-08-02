@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Story — Diamond & Travis</title>
+  <title>FAQ — Diamond & Travis</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,12 +74,6 @@
       margin: 0 auto;
       padding: 6rem 2rem;
     }
-    .section-rule {
-      max-width: 780px;
-      margin: 0 auto;
-      border: none;
-      border-top: 1px solid var(--tan);
-    }
     .section-label {
       font-family: 'Josefin Sans', sans-serif;
       font-size: 0.65rem;
@@ -95,27 +89,23 @@
     }
     p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
 
-    /* STORY HEADER */
-    #story-header {
+    /* FAQ HEADER */
+    #faq-header {
       padding: 9rem 2rem 3rem;
       text-align: center;
     }
-    #story-header h2 { margin-bottom: 0; }
+    #faq-header h2 { margin-bottom: 0; }
 
-    /* STORY */
-    .story-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--light);
-      border-radius: 2px;
-      margin: 2rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-style: italic;
-      font-size: 0.9rem;
-      border: 1px solid var(--tan);
+    /* FAQ */
+    #faq { padding-top: 0; }
+    .faq-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 2rem; }
+    .faq-item h3 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.5rem;
     }
     .back-link {
       display: inline-block;
@@ -144,34 +134,48 @@
 <body>
 
   <nav id="nav">
-    <a href="story.html" class="current">Our Story</a>
+    <a href="index.html">Home</a>
+    <a href="story.html">Our Story</a>
     <a href="index.html#details">Details</a>
     <a href="registry.html">Registry</a>
-    <a href="faq.html">FAQ</a>
+    <a href="faq.html" class="current">FAQ</a>
     <a href="rsvp.html" class="nav-rsvp">RSVP</a>
   </nav>
 
-  <!-- STORY HEADER -->
-  <section id="story-header">
-    <p class="section-label">How it happened</p>
-    <h2>Our Story</h2>
+  <!-- FAQ HEADER -->
+  <section id="faq-header">
+    <p class="section-label">Good to know</p>
+    <h2>FAQ</h2>
   </section>
 
-  <!-- STORY -->
-  <section id="story">
-    <div class="story-img">[ photo here ]</div>
-    <p>
-      We met the way good things happen in Central Oregon — slowly, honestly, out in the open air.
-      What started as a shared laugh turned into long drives down empty roads, campfires under
-      Cascade skies, and years of adventures neither of us could have predicted.
-    </p>
-    <p>
-      On a quiet evening last autumn, with the stars wide open overhead, the question was finally
-      asked. She said yes before he finished the sentence.
-    </p>
-    <p>
-      We can't wait to celebrate with everyone we love, right here in the place we call home.
-    </p>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What's the dress code?</h3>
+        <p>Black tie. The ceremony is outdoors in the high desert — we recommend layers for the evening and comfortable footwear for the terrain.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I bring a plus-one?</h3>
+        <p>Your invitation will indicate whether your plus-one is included. If you have questions, feel free to reach out before RSVPing.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Are children welcome?</h3>
+        <p>We love your little ones — please reach out and we'll let you know what works best for the evening.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Where should I stay?</h3>
+        <p>We recommend staying on-site at Brasada Resort. A discount code will be available for all guests with the wedding party — details coming soon.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Should I rent a car?</h3>
+        <p>Rental cars are available at the airport, though not necessary if you're staying at Brasada Resort.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I take an Uber?</h3>
+        <p>Yes — Uber is available and it's about a 15-minute ride from the airport.</p>
+      </div>
+    </div>
     <a href="index.html" class="back-link">&larr; Back to home</a>
   </section>
 
