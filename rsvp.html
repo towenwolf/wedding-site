@@ -128,6 +128,35 @@
     }
     .back-link:hover { color: var(--pine); }
 
+    /* ADD TO CALENDAR */
+    .calendar-links {
+      margin-top: 2.5rem;
+    }
+    .calendar-links p.section-label { text-align: center; }
+    .calendar-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .calendar-buttons a {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rust);
+      text-decoration: none;
+      border: 1.5px solid var(--rust);
+      border-radius: 2px;
+      padding: 0.6rem 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .calendar-buttons a:hover {
+      background: var(--rust);
+      color: var(--parchment);
+    }
+
     /* FOOTER */
     footer {
       text-align: center;
@@ -163,6 +192,14 @@
     <iframe class="rsvp-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     <p class="rsvp-fallback">Having trouble? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform" target="_blank" rel="noopener">Open the RSVP form directly</a>.</p>
     <a href="index.html" class="back-link">&larr; Back to home</a>
+
+    <div class="calendar-links">
+      <p class="section-label">Save the date</p>
+      <div class="calendar-buttons">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Diamond+%26+Travis%27s+Wedding&dates=20270515T230000Z%2F20270516T060000Z&details=Ceremony+at+4%3A00+PM%2C+reception+to+follow+6%3A00+PM+%E2%80%93+11%3A00+PM.+Details+at+https%3A%2F%2Fhowlwewed.com&location=Powell+Butte%2C+Oregon" target="_blank" rel="noopener">Google Calendar</a>
+        <a href="wedding.ics">Apple / Outlook (.ics)</a>
+      </div>
+    </div>
   </section>
 
   <footer>

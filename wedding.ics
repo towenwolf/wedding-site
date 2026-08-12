@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Diamond & Travis Wedding//howlwewed.com//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:diamond-travis-wedding-2027@howlwewed.com
+DTSTAMP:20260812T000000Z
+DTSTART:20270515T230000Z
+DTEND:20270516T060000Z
+SUMMARY:Diamond & Travis's Wedding
+DESCRIPTION:Ceremony at 4:00 PM\, reception to follow 6:00 PM – 11:00 PM. Details at https://howlwewed.com
+LOCATION:Powell Butte, Oregon
+URL:https://howlwewed.com
+END:VEVENT
+END:VCALENDAR
