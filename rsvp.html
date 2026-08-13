@@ -107,23 +107,31 @@
       padding-top: 0;
       padding-bottom: 4rem;
     }
-    .rsvp-frame {
-      display: block;
-      width: 100%;
-      max-width: 640px;
-      height: 1259px;
-      margin: 2rem auto 0;
-      border: none;
+    .rsvp-cta {
+      display: inline-block;
+      margin-top: 2rem;
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      background: var(--rust);
+      text-decoration: none;
+      border-radius: 2px;
+      padding: 1rem 2.5rem;
+      transition: background 0.2s;
     }
+    .rsvp-cta:hover { background: var(--pine); }
     .rsvp-fallback {
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       font-size: 0.9rem;
       color: var(--muted);
     }
     .back-link {
       display: inline-block;
       margin-top: 1rem;
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -193,8 +201,8 @@
 
   <!-- RSVP -->
   <section id="rsvp">
-    <iframe class="rsvp-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    <p class="rsvp-fallback">Having trouble? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform" target="_blank" rel="noopener">Open the RSVP form directly</a>.</p>
+    <a class="rsvp-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdS97K_BIgkoBhuudFYP372Y7NFcByPy_wwlmptlmqtltJ9Jg/viewform" target="_blank" rel="noopener">Open the RSVP Form</a>
+    <p class="rsvp-fallback">Opens in a new tab.</p>
     <a href="index.html" class="back-link">&larr; Back to home</a>
 
     <div class="calendar-links">

@@ -7,23 +7,8 @@ test.describe('RSVP section', () => {
     await page.goto('/rsvp.html');
   });
 
-  test('embeds the Google Form with the correct ID', async ({ page }) => {
-    const iframe = page.locator('.rsvp-frame');
-    await expect(iframe).toBeVisible();
-    await expect(iframe).toHaveAttribute('src', new RegExp(`forms/d/e/${FORM_ID}/viewform\\?embedded=true`));
-  });
-
-  test('loads the real form inside the iframe', async ({ page }) => {
-    const frame = page.frameLocator('.rsvp-frame');
-    await expect(frame.locator('form')).toBeVisible({ timeout: 15000 });
-    await expect(page.locator('.rsvp-frame')).not.toHaveAttribute(
-      'src',
-      /ServiceLogin|accounts\.google\.com/
-    );
-  });
-
-  test('shows a working direct-link fallback', async ({ page, request }) => {
-    const link = page.locator('.rsvp-fallback a');
+  test('links out to the Google Form with the correct ID', async ({ page, request }) => {
+    const link = page.locator('.rsvp-cta');
     await expect(link).toBeVisible();
     await expect(link).toHaveAttribute('target', '_blank');
 
@@ -32,13 +17,6 @@ test.describe('RSVP section', () => {
 
     const res = await request.get(href);
     expect(res.ok()).toBeTruthy();
-  });
-
-  test('iframe stays within viewport width (no horizontal overflow)', async ({ page }) => {
-    const iframe = page.locator('.rsvp-frame');
-    const box = await iframe.boundingBox();
-    const viewport = page.viewportSize();
-    expect(box.width).toBeLessThanOrEqual(viewport.width);
   });
 });
 
