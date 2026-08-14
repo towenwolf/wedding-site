@@ -5,7 +5,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <script src="gate.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registry — Diamond & Travis</title>
+  <title>Travel &amp; Accommodation — Diamond &amp; Travis</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preload" href="fonts/VSJohnMuirSans-Light.woff2" as="font" type="font/woff2" crossorigin />
   <style>
@@ -93,33 +93,25 @@
     }
     p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
 
-    /* REGISTRY HEADER */
-    #registry-header {
+    /* TRAVEL HEADER */
+    #travel-header {
       padding: 6rem 2rem 1.5rem;
       text-align: center;
     }
-    #registry-header h2 { margin-bottom: 0; }
-    #registry { padding-top: 1.5rem; }
+    #travel-header h2 { margin-bottom: 0; }
+    #travel { padding-top: 1.5rem; }
 
-    /* REGISTRY */
-    #registry { text-align: center; padding-top: 0; }
-    .registry-note { padding: 3rem 2rem; }
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.9rem 2.2rem;
+    /* TRAVEL */
+    .travel-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 2.5rem; }
+    .travel-item h3 {
       font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-weight: 600;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--parchment);
-      background: var(--rust);
-      border-radius: 2px;
-      text-decoration: none;
-      transition: background 0.2s;
+      color: var(--rust);
+      margin-bottom: 0.5rem;
     }
-    .btn:hover { background: var(--pine); }
+    .travel-item p { margin-bottom: 0.3rem; }
     .back-link {
       display: inline-block;
       margin-top: 1rem;
@@ -150,23 +142,35 @@
     <a href="index.html">Home</a>
     <a href="index.html#details">Details</a>
     <a href="story.html">Our Story</a>
-    <a href="travel.html">Travel</a>
-    <a href="registry.html" class="current">Registry</a>
+    <a href="travel.html" class="current">Travel</a>
+    <a href="registry.html">Registry</a>
     <a href="faq.html">FAQ</a>
     <a href="rsvp.html" class="nav-rsvp">RSVP</a>
   </nav>
 
-  <!-- REGISTRY HEADER -->
-  <section id="registry-header">
-    <p class="section-label">If you'd like</p>
-    <h2>Registry</h2>
+  <!-- TRAVEL HEADER -->
+  <section id="travel-header">
+    <p class="section-label">Getting here &amp; staying awhile</p>
+    <h2>Travel &amp; Accommodation</h2>
   </section>
 
-  <!-- REGISTRY -->
-  <section id="registry">
-    <div class="registry-note">
-      <p>Your presence is truly the only gift we need. For those who've asked, a registry will be linked here.</p>
-      <a href="#" class="btn">View Registry</a>
+  <!-- TRAVEL -->
+  <section id="travel">
+    <div class="travel-list">
+      <div class="travel-item">
+        <h3>Where to Stay</h3>
+        <p>Brasada Ranch Resort</p>
+        <p>16986 SW Brasada Ranch Rd, Powell Butte, OR 97753</p>
+        <p style="margin-top:0.75rem;">Book by <strong>[date TBD]</strong> for our room block rate.</p>
+        <p>Group/discount code: <strong>[CODE TBD]</strong></p>
+        <p style="margin-top:0.75rem;"><a href="https://www.brasada.com/bend-oregon-lodging" target="_blank" rel="noopener">brasada.com</a> or call (866) 373-4882</p>
+      </div>
+      <div class="travel-item">
+        <h3>Getting There</h3>
+        <p>The nearest airport is Redmond Municipal Airport (RDM), about a 25-minute drive from Powell Butte. Portland International (PDX) is a larger alternative, roughly 3.5 hours away.</p>
+        <p>Rental cars are available at the airport, though not necessary if you're staying at Brasada Resort.</p>
+        <p>Parking is available on-site at the venue.</p>
+      </div>
     </div>
     <a href="index.html" class="back-link">&larr; Back to home</a>
   </section>
