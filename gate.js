@@ -1,5 +1,5 @@
 (function () {
-  var PASSWORD = 'Jointhepack2027';
+  var PASSWORD = 'Jointhepack27';
   var AUTH_KEY = 'wedding-auth';
 
   var style = document.createElement('style');
