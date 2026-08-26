@@ -106,19 +106,20 @@
 
     /* STORY */
     #story { padding-top: 1.5rem; }
-    .story-img {
+    #story-gallery { max-width: 100%; padding: 0 2rem 1.5rem; }
+    .story-collage {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .story-collage img {
       width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--light);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
       border-radius: 2px;
-      margin: 0 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-style: italic;
-      font-size: 0.9rem;
-      border: 1px solid var(--tan);
+      display: block;
     }
     .back-link {
       display: inline-block;
@@ -162,9 +163,55 @@
     <h2>Our Story</h2>
   </section>
 
+  <!-- STORY GALLERY -->
+  <div id="story-gallery">
+    <div class="story-collage">
+      <img src="images/gallery/gallery-01.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-02.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-03.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-04.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-05.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-06.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-07.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-08.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-09.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-10.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-11.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-12.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-13.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-14.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-15.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-16.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-17.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-18.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-19.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-20.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-21.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-22.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-23.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-24.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-25.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-26.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-27.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-28.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-29.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-30.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-31.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-32.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-33.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-34.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-35.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-36.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-37.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-38.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-39.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-40.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-41.jpg" loading="lazy" alt="" />
+    </div>
+  </div>
+
   <!-- STORY -->
   <section id="story">
-    <div class="story-img"><img src="images/proposal.png" alt="Travis proposing to Diamond on a cliff overlooking the ocean" style="width:100%;height:100%;object-fit:cover;border-radius:2px;"></div>
     <p>
       We met as friends at a music festival at the Gorge Amphitheatre in the summer of 2018.
       Travis was traveling in from Dallas, and Diamond was living in Portland. We stayed in touch
