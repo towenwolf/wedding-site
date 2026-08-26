@@ -110,6 +110,44 @@
       margin-bottom: 0.5rem;
     }
     .travel-item p { margin-bottom: 0.3rem; }
+
+    /* MAP EMBED */
+    .map-frame {
+      margin-top: 1rem;
+      border: 2px solid var(--tan);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .map-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* FUNNY MAP */
+    .funny-map-wrap {
+      margin-top: 1.5rem;
+      border: 2px solid var(--tan);
+      border-radius: 2px;
+      background: var(--light);
+      padding: 1rem;
+    }
+    .funny-map-wrap svg { display: block; width: 100%; height: auto; }
+    .funny-map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 360px;
+      border: 0;
+    }
+    .funny-map-caption {
+      font-family: 'VS Outdoor Script', cursive;
+      font-size: 1.3rem;
+      color: var(--rust);
+      text-align: center;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+
     .back-link {
       display: inline-block;
       margin-top: 1rem;
@@ -159,14 +197,21 @@
         <h3>Where to Stay</h3>
         <p>Brasada Ranch Resort</p>
         <p>16986 SW Brasada Ranch Rd, Powell Butte, OR 97753</p>
-        <p style="margin-top:0.75rem;">To book your room, use <a href="https://be.synxis.com/?adult=1&amp;arrive=2027-05-13&amp;chain=15198&amp;child=0&amp;currency=USD&amp;depart=2027-05-16&amp;hotel=53333&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1" target="_blank" rel="noopener">this link</a> or call <a href="tel:+18777714239">1-877-771-4239</a>.</p>
-        <p style="margin-top:0.75rem;">To receive these rates, guests must book a minimum of two nights using your customized booking link or by calling the resort and referencing the "Podmore/Wolf Wedding."</p>
+        <p style="margin-top:0.75rem;">We recommend staying at Brasada Ranch. We have a discount already provided using the link or calling this phone number.</p>
+        <p style="margin-top:0.75rem;">For more info, call <a href="tel:+18777714239">1-877-771-4239</a> or use <a href="https://be.synxis.com/?adult=1&amp;arrive=2027-05-13&amp;chain=15198&amp;child=0&amp;currency=USD&amp;depart=2027-05-16&amp;hotel=53333&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1" target="_blank" rel="noopener">this link</a>.</p>
+        <div class="map-frame">
+          <img src="images/brasada-ranch-map.png" loading="lazy" alt="Illustrated property map of Brasada Ranch" />
+        </div>
       </div>
       <div class="travel-item">
         <h3>Getting There</h3>
         <p>The nearest airport is Redmond Municipal Airport (RDM), about a 25-minute drive from Powell Butte. Portland International (PDX) is a larger alternative, roughly 3.5 hours away.</p>
         <p>Rental cars are available at the airport, though not necessary if you're staying at Brasada Ranch.</p>
         <p>Parking is available on-site at the venue.</p>
+        <div class="funny-map-wrap">
+          <iframe src="https://www.google.com/maps?saddr=Redmond+Municipal+Airport+(RDM),+Redmond,+OR&amp;daddr=16986+SW+Brasada+Ranch+Rd,+Powell+Butte,+OR+97753&amp;output=embed" loading="lazy" title="Driving directions from Redmond Municipal Airport to Brasada Ranch"></iframe>
+          <p class="funny-map-caption">24 minutes, 16 miles, and zero pirates.</p>
+        </div>
       </div>
     </div>
     <a href="index.html" class="back-link">&larr; Back to home</a>
