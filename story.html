@@ -108,18 +108,41 @@
     #story { padding-top: 1.5rem; }
     #story-gallery { max-width: 100%; padding: 0 2rem 1.5rem; }
     .story-collage {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 0.5rem;
-      max-width: 1400px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1300px;
       margin: 0 auto;
+      padding: 1.5rem 0;
     }
     .story-collage img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+      width: 170px;
+      height: 170px;
       object-fit: cover;
-      border-radius: 2px;
       display: block;
+      background: #fff;
+      border: 7px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.15);
+      margin: -16px -20px;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .story-collage img:hover {
+      transform: rotate(0deg) scale(1.12) !important;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+      z-index: 50;
+    }
+    .story-collage img:nth-child(8n+1) { transform: rotate(-6deg); }
+    .story-collage img:nth-child(8n+2) { transform: rotate(4deg); }
+    .story-collage img:nth-child(8n+3) { transform: rotate(-3deg); }
+    .story-collage img:nth-child(8n+4) { transform: rotate(7deg); }
+    .story-collage img:nth-child(8n+5) { transform: rotate(-8deg); }
+    .story-collage img:nth-child(8n+6) { transform: rotate(2deg); }
+    .story-collage img:nth-child(8n+7) { transform: rotate(5deg); }
+    .story-collage img:nth-child(8n+8) { transform: rotate(-4deg); }
+    @media (max-width: 640px) {
+      .story-collage img { width: 110px; height: 110px; margin: -10px -14px; border-width: 5px; }
     }
     .back-link {
       display: inline-block;
@@ -229,7 +252,7 @@
     <p>
       Since then, we've made Portland home, filled our years with camping trips, and traveled
       together to new countries. Along the way we've learned we make a pretty great team, and
-      we've built our life around adventure, good food, and each other.
+      we've built our life around adventure, family, and each other.
     </p>
     <p>
       The proposal happened on the Oregon coast, where Travis planned a weekend with friends and
