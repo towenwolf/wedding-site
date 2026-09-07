@@ -74,6 +74,45 @@ test.describe('RSVP section', () => {
 
     await expect(page.locator('#rsvp-household')).toContainText('Thank you');
   });
+
+  test('a guest with a plus one can type their plus one\'s name', async ({ page }) => {
+    await page.route(ENDPOINT_PATTERN, (route) => {
+      if (route.request().method() === 'POST') {
+        route.fulfill({ contentType: 'application/json', body: JSON.stringify({ ok: true }) });
+        return;
+      }
+      route.fulfill({
+        contentType: 'application/json',
+        body: JSON.stringify({
+          found: true,
+          householdId: '27',
+          guests: [
+            { first: 'Michelle', last: 'Isbandi' },
+            { first: '', last: '', isPlusOne: true },
+          ],
+        }),
+      });
+    });
+
+    await page.locator('#rsvp-name').fill('Michelle Isbandi');
+    await page.locator('#rsvp-search-btn').click();
+    await expect(page.locator('#rsvp-household')).toBeVisible();
+
+    const plusOneInput = page.locator('.rsvp-plusone-name');
+    await expect(plusOneInput).toBeVisible();
+    await plusOneInput.fill('Jordan Lee');
+
+    const [postRequest] = await Promise.all([
+      page.waitForRequest((req) => req.url().match(ENDPOINT_PATTERN) && req.method() === 'POST'),
+      page.locator('#rsvp-household .rsvp-cta').click(),
+    ]);
+
+    const payload = JSON.parse(postRequest.postData());
+    expect(payload.guests).toEqual([
+      { name: 'Michelle Isbandi', attending: 'yes', dietary: '' },
+      { name: 'Jordan Lee', attending: 'yes', dietary: '' },
+    ]);
+  });
 });
 
 test('homepage nav links to the RSVP page', async ({ page }) => {

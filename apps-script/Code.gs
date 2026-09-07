@@ -1,7 +1,9 @@
 // Setup:
 // 1. Google Sheet with two tabs (already created):
 //    - "GuestList": the master guest list, columns HouseholdID, FirstName, LastName,
-//      AltFirstName, AltLastName (last two optional, for a maiden/alternate name).
+//      AltFirstName, AltLastName, IsPlusOne (last three optional; AltFirst/AltLast for
+//      a maiden/alternate name, IsPlusOne checked TRUE for an unnamed +1 slot — leave
+//      FirstName/LastName blank on that row and the guest fills in a name at RSVP time).
 //      This sheet IS the source of truth — edit rows directly in Sheets to add,
 //      remove, or fix guests. No code changes or redeploys needed; doGet/doPost
 //      read it live on every request.
@@ -40,7 +42,7 @@ function doGet(e) {
   return jsonOutput_({
     found: true,
     householdId: matched.householdId,
-    guests: household.map((g) => ({ first: g.first, last: g.last })),
+    guests: household.map((g) => ({ first: g.first, last: g.last, isPlusOne: g.isPlusOne })),
   });
 }
 
@@ -100,6 +102,7 @@ function readGuestList_() {
       last: String(row[2]),
       altFirst: String(row[3] || ''),
       altLast: String(row[4] || ''),
+      isPlusOne: row[5] === true || String(row[5]).trim().toUpperCase() === 'TRUE',
     }));
 }
 

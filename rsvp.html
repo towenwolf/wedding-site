@@ -178,6 +178,17 @@
       color: var(--sage);
       margin-bottom: 0.6rem;
     }
+    .rsvp-plusone-name {
+      display: block;
+      width: 100%;
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+      padding: 0.4rem 0.6rem;
+      border: 1.5px solid var(--tan);
+      border-radius: 2px;
+      background: var(--parchment);
+      margin-bottom: 0.6rem;
+    }
     .rsvp-guest label {
       display: inline-flex;
       align-items: center;
@@ -393,10 +404,12 @@
     function renderHousehold(householdId, guests) {
       const guestBlocks = guests
         .map((g, i) => {
-          const fullName = `${g.first} ${g.last}`;
+          const nameField = g.isPlusOne
+            ? `<input type="text" name="plusone-name-${i}" class="rsvp-plusone-name" placeholder="Your plus one's name" />`
+            : `<div class="rsvp-guest-name">${g.first} ${g.last}</div>`;
           return `
             <div class="rsvp-guest">
-              <div class="rsvp-guest-name">${fullName}</div>
+              ${nameField}
               <label><input type="radio" name="attending-${i}" value="yes" checked /> Joyfully attending</label>
               <label><input type="radio" name="attending-${i}" value="no" /> Regretfully declining</label>
               <div class="rsvp-guest-dietary">
@@ -441,7 +454,9 @@
           welcomeParty: householdForm.querySelector('input[name="welcome-party"]:checked').value,
           welcomePartyKids: householdForm.querySelector('input[name="welcome-party-kids"]:checked').value,
           guests: guests.map((g, i) => ({
-            name: `${g.first} ${g.last}`,
+            name: g.isPlusOne
+              ? householdForm.querySelector(`input[name="plusone-name-${i}"]`).value.trim() || 'Plus one'
+              : `${g.first} ${g.last}`,
             attending: householdForm.querySelector(`input[name="attending-${i}"]:checked`).value,
             dietary: householdForm.querySelector(`input[name="dietary-${i}"]`).value.trim(),
           })),
