@@ -144,6 +144,25 @@
     @media (max-width: 640px) {
       .story-collage img { width: 110px; height: 110px; margin: -10px -14px; border-width: 5px; }
     }
+    #story-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    #story-lightbox.open { display: flex; }
+    #story-lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 8px solid #fff;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
     .back-link {
       display: inline-block;
       margin-top: 1rem;
@@ -279,6 +298,27 @@
   <footer>
     Made with <span>♡</span> for Diamond &amp; Travis · May 15, 2027 · Powell Butte, Oregon
   </footer>
+
+  <div id="story-lightbox">
+    <img src="" alt="" />
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('story-lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+
+    document.querySelectorAll('.story-collage img').forEach((img) => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('open');
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('open');
+      lightboxImg.src = '';
+    });
+  </script>
 
 </body>
 </html>
