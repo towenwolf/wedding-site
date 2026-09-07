@@ -287,11 +287,16 @@
 
   <script>
     document.querySelectorAll('.story-collage img').forEach((img) => {
-      img.addEventListener('click', () => {
+      img.addEventListener('click', (event) => {
+        event.stopPropagation();
         const wasExpanded = img.classList.contains('expanded');
         document.querySelectorAll('.story-collage img.expanded').forEach((el) => el.classList.remove('expanded'));
         if (!wasExpanded) img.classList.add('expanded');
       });
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.story-collage img.expanded').forEach((el) => el.classList.remove('expanded'));
     });
   </script>
 
