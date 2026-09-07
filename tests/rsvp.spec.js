@@ -68,7 +68,9 @@ test.describe('RSVP section', () => {
     const payload = JSON.parse(postRequest.postData());
     expect(payload.householdId).toBe('1');
     expect(payload.email).toBe('margaret@example.com');
-    expect(payload.guests).toEqual([{ name: 'Margaret Wolf', attending: 'yes', meal: 'Chicken' }]);
+    expect(payload.welcomeParty).toBe('yes');
+    expect(payload.welcomePartyKids).toBe('yes');
+    expect(payload.guests).toEqual([{ name: 'Margaret Wolf', attending: 'yes', dietary: '' }]);
 
     await expect(page.locator('#rsvp-household')).toContainText('Thank you');
   });

@@ -186,10 +186,30 @@
       font-size: 0.95rem;
       color: var(--dark);
     }
-    .rsvp-guest-meal {
+    .rsvp-question {
+      border: 1.5px solid var(--tan);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      background: var(--light);
+    }
+    .rsvp-question .field-label {
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+    .rsvp-question label:not(.field-label) {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-right: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--dark);
+    }
+    .rsvp-guest-dietary {
       margin-top: 0.75rem;
     }
-    .rsvp-guest-meal select {
+    .rsvp-guest-dietary input {
+      width: 100%;
       font-family: Georgia, serif;
       font-size: 0.95rem;
       padding: 0.4rem 0.6rem;
@@ -332,7 +352,6 @@
     // Replace with the /exec URL from the Apps Script Web App deployment
     // (see apps-script/Code.gs).
     const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwE1XCJR8XJzqaN4WtMN0q8QFj6h1WSSukIXNX1unr9CvqY5lNgDsC2lt5U5axS-aXa/exec';
-    const MEAL_OPTIONS = ['Chicken', 'Steak', 'Vegetarian'];
 
     const searchForm = document.getElementById('rsvp-search');
     const searchBtn = document.getElementById('rsvp-search-btn');
@@ -372,8 +391,6 @@
     });
 
     function renderHousehold(householdId, guests) {
-      const mealOptions = MEAL_OPTIONS.map((m) => `<option value="${m}">${m}</option>`).join('');
-
       const guestBlocks = guests
         .map((g, i) => {
           const fullName = `${g.first} ${g.last}`;
@@ -382,8 +399,8 @@
               <div class="rsvp-guest-name">${fullName}</div>
               <label><input type="radio" name="attending-${i}" value="yes" checked /> Joyfully attending</label>
               <label><input type="radio" name="attending-${i}" value="no" /> Regretfully declining</label>
-              <div class="rsvp-guest-meal">
-                <select name="meal-${i}">${mealOptions}</select>
+              <div class="rsvp-guest-dietary">
+                <input type="text" name="dietary-${i}" placeholder="Dietary restrictions or allergies (optional)" />
               </div>
             </div>`;
         })
@@ -391,10 +408,20 @@
 
       householdForm.innerHTML = `
         ${guestBlocks}
-        <label class="field-label" for="rsvp-email">Email (for your confirmation)</label>
-        <input type="email" id="rsvp-email" required />
-        <label class="field-label" for="rsvp-dietary">Dietary needs</label>
-        <textarea id="rsvp-dietary" placeholder="Allergies, restrictions, etc."></textarea>
+        <div class="rsvp-question">
+          <label class="field-label">We're considering hosting a Welcome Party on Thursday, May 13. Would you be interested in joining us?</label>
+          <label><input type="radio" name="welcome-party" value="yes" checked /> Yes</label>
+          <label><input type="radio" name="welcome-party" value="no" /> No</label>
+          <label><input type="radio" name="welcome-party" value="unsure" /> Not sure yet</label>
+        </div>
+        <div class="rsvp-question">
+          <label class="field-label">Will you be bringing any children to the Welcome Party?</label>
+          <label><input type="radio" name="welcome-party-kids" value="yes" checked /> Yes</label>
+          <label><input type="radio" name="welcome-party-kids" value="no" /> No</label>
+          <label><input type="radio" name="welcome-party-kids" value="unsure" /> Not sure yet</label>
+        </div>
+        <label class="field-label" for="rsvp-email">Email (optional, for your confirmation)</label>
+        <input type="email" id="rsvp-email" />
         <label class="field-label" for="rsvp-note">Note to the couple</label>
         <textarea id="rsvp-note" placeholder="Optional"></textarea>
         <button type="submit" class="rsvp-cta">Submit RSVP</button>
@@ -410,12 +437,13 @@
         const payload = {
           householdId,
           email: document.getElementById('rsvp-email').value.trim(),
-          dietary: document.getElementById('rsvp-dietary').value.trim(),
           note: document.getElementById('rsvp-note').value.trim(),
+          welcomeParty: householdForm.querySelector('input[name="welcome-party"]:checked').value,
+          welcomePartyKids: householdForm.querySelector('input[name="welcome-party-kids"]:checked').value,
           guests: guests.map((g, i) => ({
             name: `${g.first} ${g.last}`,
             attending: householdForm.querySelector(`input[name="attending-${i}"]:checked`).value,
-            meal: householdForm.querySelector(`select[name="meal-${i}"]`).value,
+            dietary: householdForm.querySelector(`input[name="dietary-${i}"]`).value.trim(),
           })),
         };
 
@@ -426,7 +454,10 @@
             headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify(payload),
           });
-          householdForm.innerHTML = '<p>Thank you! Your RSVP has been recorded. See you there!</p>';
+          const allDeclined = payload.guests.every((g) => g.attending === 'no');
+          householdForm.innerHTML = allDeclined
+            ? '<p>We\'ll miss you! Thank you for letting us know, and we hope to celebrate together another time. ❤️</p>'
+            : '<p>Thank you! Your RSVP has been recorded. See you there!</p>';
         } catch (err) {
           submitBtn.disabled = false;
           statusEl.classList.add('error');
