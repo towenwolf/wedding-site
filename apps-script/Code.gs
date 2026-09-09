@@ -28,11 +28,7 @@ function doGet(e) {
   }
 
   const guests = readGuestList_();
-  const matched = guests.find((g) => {
-    if (normalizeName_(g.first + ' ' + g.last) === query) return true;
-    if (g.altFirst && g.altLast && normalizeName_(g.altFirst + ' ' + g.altLast) === query) return true;
-    return false;
-  });
+  const matched = guests.find((g) => nameCandidates_(g).indexOf(query) !== -1);
 
   if (!matched) {
     return jsonOutput_({ found: false });
@@ -106,8 +102,26 @@ function readGuestList_() {
     }));
 }
 
+// All the ways a guest's name might be typed at RSVP time, normalized for
+// comparison. Includes the primary name plus any alt name. The alt first or
+// alt last can be filled in on its own: a blank alt last falls back to the
+// primary last name (and vice versa), so "Oi" in AltFirstName alone still
+// matches "Oi <primary last>".
+function nameCandidates_(g) {
+  const candidates = [g.first + ' ' + g.last];
+  if (g.altFirst || g.altLast) {
+    candidates.push((g.altFirst || g.first) + ' ' + (g.altLast || g.last));
+  }
+  return candidates.map(normalizeName_);
+}
+
 function normalizeName_(name) {
-  return name.trim().replace(/\s+/g, ' ').toLowerCase();
+  return name
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '') // strip accents so "Eugénie" matches "Eugenie"
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
 }
 
 function jsonOutput_(obj) {
