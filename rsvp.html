@@ -142,6 +142,11 @@
       flex-direction: column;
       gap: 0.75rem;
     }
+    #rsvp-name-hint {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
     #rsvp-name {
       font-family: Georgia, serif;
       font-size: 1.05rem;
@@ -337,6 +342,7 @@
   <!-- RSVP -->
   <section id="rsvp">
     <form id="rsvp-search">
+      <p id="rsvp-name-hint">Enter your full name, first and last. A first name on its own won't find your invite.</p>
       <input id="rsvp-name" type="text" placeholder="Type your first and last name" autocomplete="name" required />
       <button type="submit" class="rsvp-cta" id="rsvp-search-btn">Find My Invite</button>
     </form>
@@ -387,7 +393,7 @@
 
         if (!data.found) {
           statusEl.classList.add('error');
-          statusEl.textContent = "We couldn't find that name on our guest list. Please reach out to Diamond or Travis directly and we'll sort it out.";
+          statusEl.textContent = "We couldn't find that name on our guest list. Make sure you entered your full name, first and last. If it still doesn't work, reach out to Diamond or Travis directly and we'll sort it out.";
           return;
         }
 
