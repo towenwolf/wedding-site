@@ -8,7 +8,7 @@
 //      remove, or fix guests. No code changes or redeploys needed; doGet/doPost
 //      read it live on every request.
 //    - "Responses": columns Timestamp, HouseholdID, GuestName, Attending, DietaryNotes,
-//      WelcomeParty, WelcomePartyKids, Note. (Header row only — this script appends to it.)
+//      WelcomeParty, WelcomePartyKids, Note, Email. (Header row only — this script appends to it.)
 // 2. Extensions > Apps Script, paste this file in as Code.gs.
 // 3. Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone.
 // 4. Copy the /exec URL into rsvp.html's RSVP_ENDPOINT constant.
@@ -57,6 +57,7 @@ function doPost(e) {
       body.welcomeParty || '',
       body.welcomePartyKids || '',
       body.note || '',
+      body.email || '',
     ]);
   });
 
