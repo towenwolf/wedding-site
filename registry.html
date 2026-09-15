@@ -101,7 +101,33 @@
 
     /* REGISTRY */
     #registry { text-align: center; padding-top: 0; }
-    .registry-note { padding: 3rem 2rem; }
+    .registry-note { padding: 0 0 3rem; }
+    .gift-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+    }
+    .gift-card {
+      background: var(--light);
+      border: 1px solid var(--tan);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+    .gift-card h3 {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--pine);
+      margin-bottom: 0.75rem;
+    }
+    .gift-card p { margin-bottom: 0.5rem; }
+    .gift-card .gift-detail {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      color: var(--rust);
+    }
     .btn {
       display: inline-block;
       margin-top: 1rem;
@@ -163,8 +189,37 @@
   <!-- REGISTRY -->
   <section id="registry">
     <div class="registry-note">
-      <p>Coming soon...</p>
+      <p>We're already together, so instead of a traditional registry, we're saving up for our honeymoon. If you'd like to contribute, here are a few ways to do it.</p>
     </div>
+
+    <div class="gift-options">
+      <!--
+      <div class="gift-card">
+        <h3>Honeymoon Fund</h3>
+        <p>Our honeymoon fund, with a few of the experiences we're hoping to save up for.</p>
+        <a href="https://www.honeyfund.com/site/wolf-podmore-05-15-2027" class="btn" target="_blank" rel="noopener">Visit Our Honeyfund</a>
+      </div>
+      -->
+
+      <div class="gift-card">
+        <h3>Venmo</h3>
+        <p>Send a gift directly.</p>
+        <a href="https://venmo.com/Travis-Wolf1" class="btn" target="_blank" rel="noopener">@Travis-Wolf1</a>
+      </div>
+
+      <div class="gift-card">
+        <h3>Zelle</h3>
+        <p>Send a gift directly through your banking app.</p>
+        <p class="gift-detail">towenwolf@gmail.com</p>
+      </div>
+
+      <div class="gift-card">
+        <h3>PayPal</h3>
+        <p>Send a gift directly.</p>
+        <a href="https://paypal.me/towenwolf" class="btn" target="_blank" rel="noopener">Send via PayPal</a>
+      </div>
+    </div>
+
     <a href="index.html" class="back-link">&larr; Back to home</a>
   </section>
 
