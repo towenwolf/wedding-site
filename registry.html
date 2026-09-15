@@ -119,16 +119,20 @@
     }
     .fund-visual {
       position: relative;
+      display: flex;
+      flex-direction: column;
       flex: 1 1 260px;
       min-height: 260px;
       background: var(--pine);
     }
     .fund-visual img {
-      position: absolute;
-      inset: 0;
       width: 100%;
-      height: 100%;
+      flex: 1 1 50%;
+      min-height: 0;
       object-fit: cover;
+      display: block;
+    }
+    .fund-visual img.fund-photo {
       object-position: 30% 35%;
     }
     .fund-tag {
@@ -284,7 +288,8 @@
     <div class="gift-options">
       <div class="fund-card">
         <div class="fund-visual">
-          <img src="images/honeymoon-fund.jpg" alt="Diamond and Travis toasting at dinner" loading="lazy" />
+          <img src="images/santorini.jpg" alt="Oia, Santorini overlooking the caldera" loading="lazy" />
+          <img class="fund-photo" src="images/honeymoon-fund.jpg" alt="Diamond and Travis toasting at dinner" loading="lazy" />
           <span class="fund-tag">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="var(--ember)"/></svg>
             Where We're Headed
