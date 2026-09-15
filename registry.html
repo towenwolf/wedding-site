@@ -105,28 +105,70 @@
     .gift-options {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
       padding-bottom: 2rem;
     }
-    .gift-card {
+    .fund-card {
       background: var(--light);
       border: 1px solid var(--tan);
       border-radius: 4px;
-      padding: 2rem;
+      padding: 2.5rem 2.5rem 2rem;
     }
-    .gift-card h3 {
-      font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
+    .fund-badge {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.25rem;
+    }
+    .fund-card h3 {
+      font-family: 'VS Outdoor Script', cursive;
+      font-weight: 400;
+      font-size: 2.2rem;
       color: var(--pine);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
-    .gift-card p { margin-bottom: 0.5rem; }
-    .gift-card .gift-detail {
+    .fund-intro {
+      max-width: 34ch;
+      margin: 0 auto 1.75rem;
+    }
+    .fund-methods {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .fund-methods .method-label {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .gift-detail {
       font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: 0.95rem;
       letter-spacing: 0.05em;
       color: var(--rust);
+    }
+    .fund-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 320px;
+      margin: 1.75rem auto;
+      color: var(--tan);
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+    }
+    .fund-divider::before,
+    .fund-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--tan);
+    }
+    .fund-inperson {
+      font-style: italic;
+      max-width: 34ch;
+      margin: 0 auto;
     }
     .btn {
       display: inline-block;
@@ -193,21 +235,26 @@
     </div>
 
     <div class="gift-options">
-      <!--
-      <div class="gift-card">
+      <div class="fund-card">
+        <svg class="fund-badge" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="none" stroke="var(--tan)" stroke-width="1.5"/>
+          <path d="M32 14 L34.5 27.5 L48 32 L34.5 36.5 L32 50 L29.5 36.5 L16 32 L29.5 27.5 Z" fill="var(--ember)"/>
+        </svg>
         <h3>Honeymoon Fund</h3>
-        <p>Our honeymoon fund, with a few of the experiences we're hoping to save up for.</p>
-        <a href="https://www.honeyfund.com/site/wolf-podmore-05-15-2027" class="btn" target="_blank" rel="noopener">Visit Our Honeyfund</a>
-      </div>
-      -->
+        <p class="fund-intro">However you'd like to give, here's how to reach us.</p>
 
-      <div class="gift-card">
-        <h3>Honeymoon Fund</h3>
-        <p>Send a gift via Venmo:</p>
-        <a href="https://venmo.com/Travis-Wolf1" class="btn" target="_blank" rel="noopener">@Travis-Wolf1</a>
-        <p style="margin-top:1.25rem;">Or via Zelle:</p>
+        <div class="fund-methods">
+          <a href="https://venmo.com/Travis-Wolf1" class="btn" target="_blank" rel="noopener">Send via Venmo</a>
+          <p class="method-label" style="margin-top:0.35rem;">@Travis-Wolf1</p>
+        </div>
+
+        <div class="fund-divider">or Zelle</div>
+
         <p class="gift-detail">towenwolf@gmail.com</p>
-        <p style="margin-top:1.25rem;">Cash and checks are welcome in person too.</p>
+
+        <div class="fund-divider">or in person</div>
+
+        <p class="fund-inperson">Cash and checks are always welcome too.</p>
       </div>
     </div>
 
