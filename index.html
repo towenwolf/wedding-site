@@ -34,20 +34,14 @@
       color: var(--dark);
     }
 
-    /* NAV */
+    /* NAV — on the home page it sits inside the hero, under the countdown */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0 1.5rem;
-      padding: 0 1rem;
-      background: rgba(47, 74, 58, 0.96);
-      backdrop-filter: blur(6px);
-      z-index: 100;
-      border-bottom: 2px solid var(--dark);
+      gap: 0 1.25rem;
+      margin-top: 1.75rem;
     }
     nav a {
       font-family: 'VS John Muir Sans Wide', sans-serif;
@@ -55,8 +49,9 @@
       font-size: calc(0.7rem + 1pt);
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--parchment);
+      color: var(--dark);
       text-decoration: none;
+      text-underline-offset: 0.5em;
       transition: color 0.2s;
       display: flex;
       align-items: center;
@@ -65,118 +60,81 @@
     }
     nav a:hover { color: var(--ember); }
     nav a:focus, nav a:focus-visible { outline: none; }
-    nav a.current { color: var(--ember); }
-    nav .nav-rsvp {
-      margin-left: 0.5rem;
-    }
+    nav a.current { text-decoration: underline; text-decoration-thickness: 1px; }
 
-    /* HERO — photo header. Placeholder: real photo of the Three Sisters
-       (Central Oregon), the same peaks in the save-the-date art. Swap for
-       the actual save-the-date illustration once that file is available. */
+    /* HERO — names, date and location line, countdown on the page background, with the
+       nav, then the photo framed underneath. On phones the photo moves above the names. */
     #hero {
       max-width: none;
       width: 100%;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 6rem 2rem 4rem;
-      background-image: url("https://images.unsplash.com/photo-1697490576102-3d54f65b528a?q=80&w=1920&auto=format&fit=crop");
-      background-size: cover;
-      background-position: center;
+      padding: 0 2rem 3.5rem;
       position: relative;
-      overflow: hidden;
     }
 
-    /* Darkening overlay so light text stays legible over any photo */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(20,24,17,0.45) 0%, rgba(20,24,17,0.25) 40%, rgba(20,24,17,0.55) 100%);
-      pointer-events: none;
+    .hero-photo {
+      display: block;
+      width: 100%;
+      max-width: 1000px;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      object-position: 72% 65%;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 768px) {
+      .hero-photo {
+        order: -1;
+        width: calc(100% + 4rem);
+        max-width: none;
+        margin: 0 -2rem 2.25rem;
+        aspect-ratio: 4 / 5;
+      }
     }
 
     #hero > * { position: relative; z-index: 1; }
 
-    .hero-sub {
-      font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--light);
-      margin-bottom: 1.5rem;
-    }
     h1 {
       font-family: 'VS Outdoor Script', cursive;
-      font-size: clamp(3.5rem, 12vw, 8rem);
+      font-size: clamp(2.5rem, 9vw, 4.5rem);
       font-weight: 400;
       line-height: 1.1;
-      color: var(--parchment);
+      color: var(--dark);
       letter-spacing: 0;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.25);
     }
     h1 .amp {
-      color: var(--ember);
+      color: var(--dark);
       font-weight: 400;
     }
-    .hero-date {
-      margin-top: 2rem;
-      font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
-      color: var(--light);
-      text-transform: uppercase;
-    }
-    .divider {
+    .hero-when {
+      margin: 1rem 0 0;
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin: 2rem auto;
-      width: fit-content;
-      color: var(--light);
-    }
-    .divider::before,
-    .divider::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 2px;
-      background: var(--ember);
-    }
-    .divider-star { display: flex; color: var(--ember); }
-    .divider-star svg { width: 18px; height: 18px; display: block; }
-
-    .hero-location {
-      font-size: 1.1rem;
-      color: var(--light);
-      font-style: italic;
-    }
-
-    /* COUNTDOWN */
-    #countdown {
-      display: flex;
-      gap: 2rem;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-top: 3rem;
+      align-items: baseline;
+      gap: 0 0.75rem;
+      line-height: 1.5;
     }
-    .count-block { text-align: center; }
-    .count-num {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--ember);
-      display: block;
-      line-height: 1;
-    }
-    .count-label {
+    .hero-sep { color: var(--dark); }
+    .hero-date,
+    .hero-location {
       font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+      letter-spacing: 0.25em;
+      color: var(--dark);
       text-transform: uppercase;
-      color: var(--light);
-      margin-top: 0.25rem;
+    }
+
+    /* COUNTDOWN — same type as the date line */
+    #countdown {
+      margin: 0.35rem 0 0;
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+      letter-spacing: 0.25em;
+      color: var(--dark);
+      text-transform: uppercase;
     }
 
     /* SECTIONS */
@@ -184,12 +142,6 @@
       max-width: 780px;
       margin: 0 auto;
       padding: 6rem 2rem;
-    }
-    .section-rule {
-      max-width: 780px;
-      margin: 0 auto;
-      border: none;
-      border-top: 1px solid var(--tan);
     }
     .section-label {
       font-family: 'VS John Muir Sans Wide', sans-serif;
@@ -207,39 +159,79 @@
     }
     p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
 
-    /* DETAILS */
-    #details { max-width: 100%; padding: 6rem 2rem; }
-    #details > .inner { max-width: 780px; margin: 0 auto; }
-    .detail-grid {
+    /* DETAILS — casual drinks, welcome party, wedding day */
+    #details { max-width: 100%; padding: 1rem 2rem 4.5rem; }
+    #details > .inner {
+      max-width: 600px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      margin-top: 2rem;
+      gap: 3rem;
+      text-align: center;
     }
-    @media (max-width: 560px) { .detail-grid { grid-template-columns: 1fr; } }
-
-    /* Tighten hero whitespace on wider viewports */
-    @media (min-width: 769px) {
-      #hero { min-height: auto; padding: 5rem 2rem 4rem; }
-      .hero-sub { margin-bottom: 1rem; }
-      .divider { margin: 1.25rem auto; }
-      .hero-date { margin-top: 1.25rem; }
-      #countdown { margin-top: 2rem; }
+    .event h3 {
+      font-family: 'VS Outdoor Script', cursive;
+      font-size: 2.2rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
     }
-    .detail-card {
-      border-left: 3px solid var(--pine);
-      padding-left: 1.25rem;
+    .event p { margin-bottom: 0.3rem; font-size: 1rem; line-height: 1.6; }
+    .event .event-when {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
     }
-    .detail-card h3 {
+    /* Wedding day schedule: times on the left, event names on the right */
+    .event-schedule {
+      list-style: none;
+      margin: 1.75rem 0 0;
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: center;
+      align-items: baseline;
+      gap: 1rem 1rem;
+    }
+    /* Each row spans both columns and gets a divider above it */
+    .event-schedule li {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: subgrid;
+      align-items: baseline;
+      padding-top: 1rem;
+      position: relative;
+    }
+    .event-schedule li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 220px;
+      transform: translateX(-50%);
+      border-top: 1px solid var(--tan);
+    }
+    .event-time {
+      text-align: right;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .event-part {
+      text-align: left;
       font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--rust);
-      margin-bottom: 0.75rem;
     }
-    .detail-card p { margin-bottom: 0.3rem; font-size: 1rem; }
+    .event .event-attire { margin-top: 0.75rem; font-style: italic; }
 
+    /* Tighten hero whitespace on wider viewports */
+    @media (min-width: 769px) {
+      #hero { min-height: auto; padding: 3.5rem 2rem 3.5rem; }
+    }
     /* STORY */
     .story-img {
       width: 100%;
@@ -265,69 +257,58 @@
       border-top: 2px solid var(--pine);
       font-style: italic;
     }
-    footer span { color: var(--rust); }
   </style>
 </head>
 <body>
 
-  <nav id="nav">
-    <a href="index.html" class="current">Home</a>
-    <a href="story.html">Our Story</a>
-    <a href="travel.html">Travel</a>
-    <a href="registry.html">Registry</a>
-    <a href="faq.html">FAQ</a>
-    <a href="rsvp.html" class="nav-rsvp">RSVP</a>
-  </nav>
-
   <!-- HERO -->
   <section id="hero">
-    <p class="hero-sub">Under the high desert sky</p>
     <h1>Diamond <span class="amp">&</span> Travis</h1>
-    <p class="hero-date">May 15, 2027</p>
-    <div class="divider"><span class="divider-star"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L6.5 10h3L4.5 18h5V23h5v-5h5l-5-8h3z"/></svg></span></div>
-    <p class="hero-location">Powell Butte, Oregon</p>
-    <div id="countdown">
-      <div class="count-block"><span class="count-num" id="cd-days">—</span><span class="count-label">Days</span></div>
-      <div class="count-block"><span class="count-num" id="cd-hours">—</span><span class="count-label">Hours</span></div>
-      <div class="count-block"><span class="count-num" id="cd-mins">—</span><span class="count-label">Minutes</span></div>
-    </div>
+    <p class="hero-when"><span class="hero-date">May 15, 2027</span><span class="hero-sep" aria-hidden="true">&bull;</span><span class="hero-location">Bend, Oregon</span></p>
+    <p id="countdown"><span id="cd-days">—</span> Days To Go!</p>
+    <nav id="nav">
+      <a href="index.html" class="current">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="travel.html">Travel</a>
+      <a href="registry.html">Registry</a>
+      <a href="faq.html">FAQ</a>
+      <a href="rsvp.html" class="nav-rsvp">RSVP</a>
+    </nav>
+    <img class="hero-photo" src="images/hero-coast.jpg" alt="Diamond and Travis holding hands on a grassy cliff above the Oregon coast">
   </section>
-
-  <hr class="section-rule">
 
   <!-- DETAILS -->
   <div id="details">
     <div class="inner">
-      <p class="section-label">What to know</p>
-      <h2>Event Details</h2>
-      <div class="detail-grid">
-        <div class="detail-card">
-          <h3>Welcome Party</h3>
-          <p>Thursday, May 13, 2027</p>
-          <p style="margin-top:0.75rem;">Details to follow.</p>
-        </div>
-        <div class="detail-card">
-          <h3>Ceremony</h3>
-          <p>Saturday, May 15, 2027</p>
-          <p>4:00 PM</p>
-          <p style="margin-top:0.75rem;">Location: Brasada Ranch</p>
-        </div>
-        <div class="detail-card">
-          <h3>Reception</h3>
-          <p>Immediately following</p>
-          <p style="margin-top:0.75rem;">Location: Brasada Ranch<br>Cocktail hour under open sky<br>Dinner &amp; dancing to follow</p>
-        </div>
-        <div class="detail-card">
-          <h3>Travel &amp; Accommodation</h3>
-          <p>Where to stay, how to get here, and everything in between.</p>
-          <p style="margin-top:0.75rem;"><a href="travel.html">See travel details &rarr;</a></p>
-        </div>
+      <div class="event">
+        <h3>Casual Drinks</h3>
+        <p class="event-when">Thursday, May 13, 2027</p>
+        <p>Wild Rye at Brasada Ranch</p>
+        <p>7:00 to 9:00 PM</p>
+      </div>
+      <div class="event">
+        <h3>Welcome Party</h3>
+        <p class="event-when">Friday, May 14, 2027</p>
+        <p>Details to follow.</p>
+        <p class="event-attire">Attire: Cocktail or cowboy cocktail</p>
+      </div>
+      <div class="event">
+        <h3>Wedding Day</h3>
+        <p class="event-when">Saturday, May 15, 2027</p>
+        <p>Brasada Ranch</p>
+        <p>4:00 to 11:00 PM</p>
+        <p class="event-attire">Attire: Formal</p>
+        <ul class="event-schedule">
+          <li><span class="event-time">4:00 PM</span><span class="event-part">Ceremony</span></li>
+          <li><span class="event-time">4:30 to 5:30 PM</span><span class="event-part">Cocktail Hour</span></li>
+          <li><span class="event-time">5:45 PM</span><span class="event-part">Reception</span></li>
+        </ul>
       </div>
     </div>
   </div>
 
   <footer>
-    Made with <span>♡</span> for Diamond &amp; Travis · May 15, 2027 · Powell Butte, Oregon
+    D &amp; T | May 15, 2027
   </footer>
 
   <script>
@@ -336,15 +317,10 @@
       const now = new Date();
       const diff = target - now;
       if (diff <= 0) {
-        document.getElementById('countdown').innerHTML = '<p style="color:var(--rust);font-style:italic">Today\'s the day!</p>';
+        document.getElementById('countdown').textContent = 'Today\'s the day!';
         return;
       }
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      document.getElementById('cd-days').textContent = d;
-      document.getElementById('cd-hours').textContent = h;
-      document.getElementById('cd-mins').textContent = m;
+      document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
     }
     tick();
     setInterval(tick, 60000);
