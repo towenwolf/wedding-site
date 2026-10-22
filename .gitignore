@@ -3,3 +3,4 @@ test-results/
 playwright-report/
 .clasp.json
 .clasprc.json
+apps-script/guest-list.csv

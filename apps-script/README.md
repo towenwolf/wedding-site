@@ -1,7 +1,7 @@
 # Apps Script backend
 
 `Code.gs` is the RSVP backend, bound to the wedding Google Sheet. `appsscript.json`
-is its manifest. `guest-list.csv` is a reference copy of the sheet's GuestList tab
+is its manifest. `guest-list.csv` (gitignored, local only, never committed since it holds guest names) is a reference copy of the sheet's GuestList tab
 (the sheet itself is the source of truth).
 
 ## Auto deploy
