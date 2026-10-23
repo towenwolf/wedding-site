@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="gate.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photos — Diamond &amp; Travis</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preload" href="fonts/VSJohnMuirSans-Light.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/VSOutdoorScript.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/Lora.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face { font-family: "VS John Muir Sans Wide"; src: url("fonts/VSJohnMuirSans-Light.woff2") format("woff2"), url("fonts/VSJohnMuirSans-Light.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "VS Outdoor Script"; src: url("fonts/VSOutdoorScript.woff2") format("woff2"), url("fonts/VSOutdoorScript.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "Lora"; src: url("fonts/Lora.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Lora"; src: url("fonts/Lora-Italic.woff2") format("woff2"); font-weight: 400 700; font-style: italic; font-display: swap; }
+  </style>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --parchment: #f2ecd9;
+      --rust:    #7a4426;
+      --ember:   #c9982f;
+      --sage:    #3f5c42;
+      --dark:    #22281d;
+      --muted:   #57544a;
+      --light:   #e6e3cf;
+      --tan:     #a9895a;
+      --pine:    #2f4a3a;
+      --bg:      #2f4a3a;
+      --ink:     #f4e4c5;
+    }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    /* HEADER — same names, date line, countdown and nav as the home page */
+    #page-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3.5rem 2rem 0.5rem;
+    }
+    h1 {
+      font-family: 'VS Outdoor Script', cursive;
+      font-size: clamp(2.5rem, 9vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .hero-when {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0 0.75rem;
+      line-height: 1.5;
+    }
+    .hero-date,
+    .hero-location,
+    #countdown {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    #countdown { margin-top: 0.35rem; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0 1.25rem;
+      margin-top: 1.75rem;
+    }
+    nav a {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-weight: 600;
+      font-size: calc(0.7rem + 1pt);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      text-underline-offset: 0.5em;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 0.5rem;
+    }
+    nav a:hover { opacity: 0.7; }
+    nav a:focus, nav a:focus-visible { outline: none; }
+    nav a.current { text-decoration: underline; text-decoration-thickness: 1px; }
+
+    /* SECTIONS */
+    section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+    .section-label {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: calc(0.65rem + 1pt);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: 'VS Outdoor Script', cursive;
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+    p { line-height: 1.9; margin-bottom: 1rem; font-size: 1.05rem; }
+    p a { color: var(--ink); }
+
+    /* PHOTOS HEADER */
+    #photos-header {
+      padding: 1rem 2rem 1rem;
+      text-align: center;
+    }
+    #photos-header h2 { margin-bottom: 0; }
+    #photos { padding-top: 1rem; }
+
+    /* PHOTOS — engagement gallery */
+    #photos { max-width: 1100px; }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+      gap: 1rem;
+    }
+    .photo-grid img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
+    .photo-credit { text-align: center; font-style: italic; margin-top: 1.5rem; }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: calc(0.7rem + 1pt);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 0.85rem;
+      border-top: 2px solid var(--ink);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="page-header">
+    <h1>Diamond &amp; Travis</h1>
+    <p class="hero-when"><span class="hero-date">May 15, 2027</span><span aria-hidden="true">&bull;</span><span class="hero-location">Bend, Oregon</span></p>
+    <p id="countdown"><span id="cd-days">—</span> Days To Go!</p>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="travel.html">Travel</a>
+      <a href="things-to-do.html">Things to Do</a>
+      <a href="photos.html" class="current">Photos</a>
+      <a href="registry.html">Registry</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- PHOTOS HEADER -->
+  <section id="photos-header">
+    <h2>Engagement Photos</h2>
+  </section>
+
+  <!-- PHOTOS -->
+  <section id="photos">
+    <div class="photo-grid">
+      <img src="images/engagement/engagement-01.jpg" loading="lazy" alt="Diamond and Travis holding hands on a grassy cliff above the Oregon coast" />
+      <img src="images/engagement/engagement-02.jpg" loading="lazy" alt="Diamond looking back at Travis as they walk along the Oregon coast cliffs" />
+    </div>
+    <a href="index.html" class="back-link">&larr; Back to home</a>
+  </section>
+
+  <footer>D &amp; T | May 15, 2027</footer>
+
+  <script>
+    function tick() {
+      const diff = new Date('2027-05-15T16:00:00') - new Date();
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = 'Today\'s the day!';
+        return;
+      }
+      document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+    }
+    tick();
+    setInterval(tick, 60000);
+  </script>
+
+</body>
+</html>
