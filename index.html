@@ -26,12 +26,14 @@
       --light:   #e6e3cf;
       --tan:     #a9895a;
       --pine:    #2f4a3a;
+      --bg:      #2f4a3a;
+      --ink:     #f4e4c5;
     }
 
     body {
       font-family: Georgia, 'Times New Roman', serif;
-      background: var(--parchment);
-      color: var(--dark);
+      background: var(--bg);
+      color: var(--ink);
     }
 
     /* NAV — on the home page it sits inside the hero, under the countdown */
@@ -49,16 +51,16 @@
       font-size: calc(0.7rem + 1pt);
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--dark);
+      color: var(--ink);
       text-decoration: none;
       text-underline-offset: 0.5em;
-      transition: color 0.2s;
+      transition: opacity 0.2s;
       display: flex;
       align-items: center;
       min-height: 44px;
       padding: 0 0.5rem;
     }
-    nav a:hover { color: var(--ember); }
+    nav a:hover { opacity: 0.7; }
     nav a:focus, nav a:focus-visible { outline: none; }
     nav a.current { text-decoration: underline; text-decoration-thickness: 1px; }
 
@@ -101,11 +103,11 @@
       font-size: clamp(2.5rem, 9vw, 4.5rem);
       font-weight: 400;
       line-height: 1.1;
-      color: var(--dark);
+      color: var(--ink);
       letter-spacing: 0;
     }
     h1 .amp {
-      color: var(--dark);
+      color: var(--ink);
       font-weight: 400;
     }
     .hero-when {
@@ -117,13 +119,13 @@
       gap: 0 0.75rem;
       line-height: 1.5;
     }
-    .hero-sep { color: var(--dark); }
+    .hero-sep { color: var(--ink); }
     .hero-date,
     .hero-location {
       font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: clamp(0.85rem, 3.5vw, 1rem);
       letter-spacing: 0.25em;
-      color: var(--dark);
+      color: var(--ink);
       text-transform: uppercase;
     }
 
@@ -133,7 +135,7 @@
       font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: clamp(0.85rem, 3.5vw, 1rem);
       letter-spacing: 0.25em;
-      color: var(--dark);
+      color: var(--ink);
       text-transform: uppercase;
     }
 
@@ -148,7 +150,7 @@
       font-size: calc(0.65rem + 1pt);
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--sage);
+      color: var(--ink);
       margin-bottom: 1rem;
     }
     h2 {
@@ -157,7 +159,7 @@
       font-weight: 700;
       margin-bottom: 2rem;
     }
-    p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
+    p { line-height: 1.9; color: var(--ink); margin-bottom: 1rem; font-size: 1.05rem; }
 
     /* DETAILS — casual drinks, welcome party, wedding day */
     #details { max-width: 100%; padding: 1rem 2rem 4.5rem; }
@@ -173,7 +175,7 @@
       font-size: 2.2rem;
       font-weight: 400;
       line-height: 1.2;
-      color: var(--dark);
+      color: var(--ink);
       margin-bottom: 0.75rem;
     }
     .event p { margin-bottom: 0.3rem; font-size: 1rem; line-height: 1.6; }
@@ -182,7 +184,7 @@
       font-size: 0.8rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--dark);
+      color: var(--ink);
       margin-bottom: 0.6rem;
     }
     /* Wedding day schedule: times on the left, event names on the right */
@@ -211,11 +213,11 @@
       left: 50%;
       width: 220px;
       transform: translateX(-50%);
-      border-top: 1px solid var(--tan);
+      border-top: 1px solid var(--ink);
     }
     .event-time {
       text-align: right;
-      color: var(--muted);
+      color: var(--ink);
       line-height: 1.6;
     }
     .event-part {
@@ -224,7 +226,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--rust);
+      color: var(--ink);
     }
     .event .event-attire { margin-top: 0.75rem; font-style: italic; }
 
@@ -242,10 +244,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--muted);
+      color: var(--ink);
       font-style: italic;
       font-size: 0.9rem;
-      border: 1px solid var(--tan);
+      border: 1px solid var(--ink);
     }
 
     /* FOOTER */
@@ -253,8 +255,8 @@
       text-align: center;
       padding: 3rem 2rem;
       font-size: 0.85rem;
-      color: var(--muted);
-      border-top: 2px solid var(--pine);
+      color: var(--ink);
+      border-top: 2px solid var(--ink);
       font-style: italic;
     }
   </style>
