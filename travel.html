@@ -8,9 +8,13 @@
   <title>Travel &amp; Accommodation — Diamond &amp; Travis</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preload" href="fonts/VSJohnMuirSans-Light.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/VSOutdoorScript.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/Lora.woff2" as="font" type="font/woff2" crossorigin />
   <style>
     @font-face { font-family: "VS John Muir Sans Wide"; src: url("fonts/VSJohnMuirSans-Light.woff2") format("woff2"), url("fonts/VSJohnMuirSans-Light.woff") format("woff"); font-weight: 400; font-display: swap; }
     @font-face { font-family: "VS Outdoor Script"; src: url("fonts/VSOutdoorScript.woff2") format("woff2"), url("fonts/VSOutdoorScript.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "Lora"; src: url("fonts/Lora.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Lora"; src: url("fonts/Lora-Italic.woff2") format("woff2"); font-weight: 400 700; font-style: italic; font-display: swap; }
   </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,28 +29,56 @@
       --light:   #e6e3cf;
       --tan:     #a9895a;
       --pine:    #2f4a3a;
+      --bg:      #2f4a3a;
+      --ink:     #f4e4c5;
     }
 
     body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--parchment);
-      color: var(--dark);
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
     }
 
-    /* NAV */
+    /* HEADER — same names, date line, countdown and nav as the home page */
+    #page-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3.5rem 2rem 0.5rem;
+    }
+    h1 {
+      font-family: 'VS Outdoor Script', cursive;
+      font-size: clamp(2.5rem, 9vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .hero-when {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0 0.75rem;
+      line-height: 1.5;
+    }
+    .hero-date,
+    .hero-location,
+    #countdown {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    #countdown { margin-top: 0.35rem; }
+
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0 1.5rem;
-      padding: 0 1rem;
-      background: rgba(47, 74, 58, 0.96);
-      backdrop-filter: blur(6px);
-      z-index: 100;
-      border-bottom: 2px solid var(--dark);
+      gap: 0 1.25rem;
+      margin-top: 1.75rem;
     }
     nav a {
       font-family: 'VS John Muir Sans Wide', sans-serif;
@@ -54,20 +86,18 @@
       font-size: calc(0.7rem + 1pt);
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--parchment);
+      color: var(--ink);
       text-decoration: none;
-      transition: color 0.2s;
+      text-underline-offset: 0.5em;
+      transition: opacity 0.2s;
       display: flex;
       align-items: center;
       min-height: 44px;
       padding: 0 0.5rem;
     }
-    nav a:hover { color: var(--ember); }
+    nav a:hover { opacity: 0.7; }
     nav a:focus, nav a:focus-visible { outline: none; }
-    nav a.current { color: var(--ember); }
-    nav .nav-rsvp {
-      margin-left: 0.5rem;
-    }
+    nav a.current { text-decoration: underline; text-decoration-thickness: 1px; }
 
     /* SECTIONS */
     section {
@@ -80,20 +110,22 @@
       font-size: calc(0.65rem + 1pt);
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--sage);
+      color: var(--ink);
       margin-bottom: 1rem;
     }
     h2 {
-      font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 700;
+      font-family: 'VS Outdoor Script', cursive;
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.2;
       margin-bottom: 2rem;
     }
-    p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
+    p { line-height: 1.9; margin-bottom: 1rem; font-size: 1.05rem; }
+    p a { color: var(--ink); }
 
     /* TRAVEL HEADER */
     #travel-header {
-      padding: 6rem 2rem 1.5rem;
+      padding: 1rem 2rem 1.5rem;
       text-align: center;
     }
     #travel-header h2 { margin-bottom: 0; }
@@ -106,7 +138,7 @@
       font-size: calc(0.7rem + 1pt);
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--rust);
+      color: var(--ink);
       margin-bottom: 0.5rem;
     }
     .travel-item p { margin-bottom: 0.3rem; }
@@ -117,6 +149,8 @@
       border: 2px solid var(--tan);
       border-radius: 2px;
       overflow: hidden;
+      /* The map PNG is transparent around the legend, so give it the original cream behind it */
+      background: var(--parchment);
     }
     .map-frame img {
       display: block;
@@ -156,37 +190,39 @@
       font-size: calc(0.7rem + 1pt);
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--rust);
+      color: var(--ink);
       text-decoration: none;
     }
-    .back-link:hover { color: var(--pine); }
+    .back-link:hover { opacity: 0.7; }
 
     /* FOOTER */
     footer {
       text-align: center;
       padding: 3rem 2rem;
       font-size: 0.85rem;
-      color: var(--muted);
-      border-top: 2px solid var(--pine);
+      border-top: 2px solid var(--ink);
       font-style: italic;
     }
-    footer span { color: var(--rust); }
   </style>
 </head>
 <body>
 
-  <nav id="nav">
-    <a href="index.html">Home</a>
-    <a href="story.html">Our Story</a>
-    <a href="travel.html" class="current">Travel</a>
-    <a href="registry.html">Registry</a>
-    <a href="faq.html">FAQ</a>
-    <a href="rsvp.html" class="nav-rsvp">RSVP</a>
-  </nav>
+  <!-- HEADER -->
+  <header id="page-header">
+    <h1>Diamond &amp; Travis</h1>
+    <p class="hero-when"><span class="hero-date">May 15, 2027</span><span aria-hidden="true">&bull;</span><span class="hero-location">Bend, Oregon</span></p>
+    <p id="countdown"><span id="cd-days">—</span> Days To Go!</p>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="travel.html" class="current">Travel</a>
+      <a href="registry.html">Registry</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+  </header>
 
   <!-- TRAVEL HEADER -->
   <section id="travel-header">
-    <p class="section-label">Getting here &amp; staying awhile</p>
     <h2>Travel &amp; Accommodation</h2>
   </section>
 
@@ -214,9 +250,20 @@
     <a href="index.html" class="back-link">&larr; Back to home</a>
   </section>
 
-  <footer>
-    Made with <span>♡</span> for Diamond &amp; Travis · May 15, 2027 · Powell Butte, Oregon
-  </footer>
+  <footer>D &amp; T | May 15, 2027</footer>
+
+  <script>
+    function tick() {
+      const diff = new Date('2027-05-15T16:00:00') - new Date();
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = 'Today\'s the day!';
+        return;
+      }
+      document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+    }
+    tick();
+    setInterval(tick, 60000);
+  </script>
 
 </body>
 </html>

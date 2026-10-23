@@ -8,45 +8,68 @@
   <title>Our Story — Diamond & Travis</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preload" href="fonts/VSJohnMuirSans-Light.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/VSOutdoorScript.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/Lora.woff2" as="font" type="font/woff2" crossorigin />
   <style>
     @font-face { font-family: "VS John Muir Sans Wide"; src: url("fonts/VSJohnMuirSans-Light.woff2") format("woff2"), url("fonts/VSJohnMuirSans-Light.woff") format("woff"); font-weight: 400; font-display: swap; }
     @font-face { font-family: "VS Outdoor Script"; src: url("fonts/VSOutdoorScript.woff2") format("woff2"), url("fonts/VSOutdoorScript.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "Lora"; src: url("fonts/Lora.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Lora"; src: url("fonts/Lora-Italic.woff2") format("woff2"); font-weight: 400 700; font-style: italic; font-display: swap; }
   </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --parchment: #f2ecd9;
-      --rust:    #7a4426;
-      --ember:   #c9982f;
-      --sage:    #3f5c42;
-      --dark:    #22281d;
-      --muted:   #57544a;
-      --light:   #e6e3cf;
-      --tan:     #a9895a;
-      --pine:    #2f4a3a;
+      --bg:  #2f4a3a;
+      --ink: #f4e4c5;
     }
 
     body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--parchment);
-      color: var(--dark);
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
     }
 
-    /* NAV */
+    /* HEADER — same names, date line, countdown and nav as the home page */
+    #page-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3.5rem 2rem 0.5rem;
+    }
+    h1 {
+      font-family: 'VS Outdoor Script', cursive;
+      font-size: clamp(2.5rem, 9vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .hero-when {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0 0.75rem;
+      line-height: 1.5;
+    }
+    .hero-date,
+    .hero-location,
+    #countdown {
+      font-family: 'VS John Muir Sans Wide', sans-serif;
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    #countdown { margin-top: 0.35rem; }
+
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0 1.5rem;
-      padding: 0 1rem;
-      background: rgba(47, 74, 58, 0.96);
-      backdrop-filter: blur(6px);
-      z-index: 100;
-      border-bottom: 2px solid var(--dark);
+      gap: 0 1.25rem;
+      margin-top: 1.75rem;
     }
     nav a {
       font-family: 'VS John Muir Sans Wide', sans-serif;
@@ -54,88 +77,87 @@
       font-size: calc(0.7rem + 1pt);
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--parchment);
+      color: var(--ink);
       text-decoration: none;
-      transition: color 0.2s;
+      text-underline-offset: 0.5em;
+      transition: opacity 0.2s;
       display: flex;
       align-items: center;
       min-height: 44px;
       padding: 0 0.5rem;
     }
-    nav a:hover { color: var(--ember); }
+    nav a:hover { opacity: 0.7; }
     nav a:focus, nav a:focus-visible { outline: none; }
-    nav a.current { color: var(--ember); }
-    nav .nav-rsvp {
-      margin-left: 0.5rem;
-    }
+    nav a.current { text-decoration: underline; text-decoration-thickness: 1px; }
 
-    /* SECTIONS */
-    section {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 6rem 2rem;
-    }
-    .section-rule {
-      max-width: 780px;
-      margin: 0 auto;
-      border: none;
-      border-top: 1px solid var(--tan);
-    }
-    .section-label {
-      font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-size: calc(0.65rem + 1pt);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 1rem;
-    }
     h2 {
-      font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-    }
-    p { line-height: 1.9; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
-
-    /* STORY HEADER */
-    #story-header {
-      padding: 6rem 2rem 1.5rem;
+      font-family: 'VS Outdoor Script', cursive;
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.2;
       text-align: center;
+      margin-bottom: 1.5rem;
     }
-    #story-header h2 { margin-bottom: 0; }
+    p { line-height: 1.9; margin-bottom: 1rem; font-size: 1.05rem; }
 
-    /* STORY */
-    #story { padding-top: 1.5rem; }
-    #story-gallery { max-width: 100%; padding: 0 2rem 1.5rem; }
-    .story-collage {
-      display: flex;
-      flex-wrap: wrap;
+    /* STORY — text in the middle, framed by a photo collage on all four sides */
+    .story-frame {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 640px) 170px;
+      grid-template-areas:
+        "top    top  top"
+        "left   text right"
+        "bottom bottom bottom";
       justify-content: center;
-      max-width: 1300px;
+      column-gap: 2.5rem;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 1.5rem 0;
+      padding: 0.75rem 2rem 3rem;
     }
+    .collage-top    { grid-area: top; }
+    .collage-left   { grid-area: left; }
+    .story-text     { grid-area: text; align-self: center; padding: 1.5rem 0; }
+    .collage-right  { grid-area: right; }
+    .collage-bottom { grid-area: bottom; }
+
+    .collage-top,
+    .collage-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+    .collage-left,
+    .collage-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
     .story-collage img {
-      width: 170px;
-      height: 170px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       display: block;
       background: #fff;
       border: 7px solid #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.15);
-      margin: -16px -20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.2);
       position: relative;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
     }
+    .collage-top img,
+    .collage-bottom img { margin: -12px -16px; }
+    .collage-left img,
+    .collage-right img { margin: -30px 0; }
     .story-collage img:hover {
       transform: rotate(0deg) scale(1.12) !important;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.45);
       z-index: 50;
     }
     .story-collage img.expanded {
       transform: rotate(0deg) scale(2) !important;
-      box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.55);
       z-index: 100;
     }
     .story-collage img:nth-child(8n+1) { transform: rotate(-6deg); }
@@ -146,9 +168,37 @@
     .story-collage img:nth-child(8n+6) { transform: rotate(2deg); }
     .story-collage img:nth-child(8n+7) { transform: rotate(5deg); }
     .story-collage img:nth-child(8n+8) { transform: rotate(-4deg); }
-    @media (max-width: 640px) {
-      .story-collage img { width: 110px; height: 110px; margin: -10px -14px; border-width: 5px; }
+
+    /* Narrower screens: slimmer side columns and smaller photos */
+    @media (max-width: 1199px) {
+      .story-frame { grid-template-columns: 120px minmax(0, 1fr) 120px; column-gap: 1.5rem; }
+      .story-collage img { width: 110px; height: 110px; border-width: 5px; }
     }
+
+    /* Phones: photos above the story, the rest below it */
+    @media (max-width: 900px) {
+      .story-frame {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1.25rem 3rem;
+      }
+      .collage-left,
+      .collage-right {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        order: 2;
+      }
+      .collage-top,
+      .collage-bottom { flex-wrap: wrap; justify-content: center; }
+      .collage-bottom { order: 3; }
+      .story-collage img { width: 96px; height: 96px; }
+      .story-collage img,
+      .collage-left img,
+      .collage-right img { margin: -8px -10px; }
+      .story-text { padding: 2rem 0.5rem; }
+    }
+
     .back-link {
       display: inline-block;
       margin-top: 1rem;
@@ -156,43 +206,40 @@
       font-size: calc(0.7rem + 1pt);
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--rust);
+      color: var(--ink);
       text-decoration: none;
     }
-    .back-link:hover { color: var(--pine); }
+    .back-link:hover { opacity: 0.7; }
 
     /* FOOTER */
     footer {
       text-align: center;
       padding: 3rem 2rem;
       font-size: 0.85rem;
-      color: var(--muted);
-      border-top: 2px solid var(--pine);
+      border-top: 2px solid var(--ink);
       font-style: italic;
     }
-    footer span { color: var(--rust); }
   </style>
 </head>
 <body>
 
-  <nav id="nav">
-    <a href="index.html">Home</a>
-    <a href="story.html" class="current">Our Story</a>
-    <a href="travel.html">Travel</a>
-    <a href="registry.html">Registry</a>
-    <a href="faq.html">FAQ</a>
-    <a href="rsvp.html" class="nav-rsvp">RSVP</a>
-  </nav>
+  <!-- HEADER -->
+  <header id="page-header">
+    <h1>Diamond &amp; Travis</h1>
+    <p class="hero-when"><span class="hero-date">May 15, 2027</span><span aria-hidden="true">&bull;</span><span class="hero-location">Bend, Oregon</span></p>
+    <p id="countdown"><span id="cd-days">—</span> Days To Go!</p>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="story.html" class="current">Our Story</a>
+      <a href="travel.html">Travel</a>
+      <a href="registry.html">Registry</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+  </header>
 
-  <!-- STORY HEADER -->
-  <section id="story-header">
-    <p class="section-label">How it happened</p>
-    <h2>Our Story</h2>
-  </section>
-
-  <!-- STORY GALLERY -->
-  <div id="story-gallery">
-    <div class="story-collage">
+  <!-- STORY: text framed by the photo collage -->
+  <section class="story-frame">
+    <div class="story-collage collage-top">
       <img src="images/gallery/gallery-01.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-02.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-03.jpg" loading="lazy" alt="" />
@@ -201,6 +248,8 @@
       <img src="images/gallery/gallery-06.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-07.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-08.jpg" loading="lazy" alt="" />
+    </div>
+    <div class="story-collage collage-left">
       <img src="images/gallery/gallery-09.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-10.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-11.jpg" loading="lazy" alt="" />
@@ -212,6 +261,52 @@
       <img src="images/gallery/gallery-17.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-18.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-19.jpg" loading="lazy" alt="" />
+      <img src="images/gallery/gallery-32.jpg" loading="lazy" alt="" />
+    </div>
+    <div class="story-text">
+      <h2>Our Story</h2>
+      <p>
+        We met as friends at a music festival at the Gorge Amphitheater in the summer of 2018,
+        through our college buddy, Mac. Travis was traveling in from Dallas, and Diamond was living
+        in Portland. We stayed in touch as friends for a year and a half, furthering our bond by many
+        deep conversations, having a shared sense of humor, a love for music, concerts, and the
+        outdoors.
+      </p>
+      <p>
+        Our first real date came in December of 2019, when Travis flew out to visit Diamond in
+        Portland for the first time. We grabbed banh mi at the Golden Dragon in Southeast Portland,
+        and that same weekend we went skiing together, where Travis met Diamond's family. From there,
+        we started a long distance relationship, then COVID hit. Travis finished grad school Spring
+        of 2020 and Diamond had lost her job at Adidas. Even though the circumstances weren't ideal
+        for the remainder of that year, it really pushed us closer together. Travis found a job and
+        moved to Portland in the summer of 2021, where we then made the decision to move in together
+        where we could finally start building a life together in the same place.
+      </p>
+      <p>
+        Since then, we've made Oregon our home. We love our day dates at the rose garden, where we
+        literally stop and smell the roses. We love to cook together and have even started venturing
+        into taking cooking classes in the city. When we aren't cooking, we are either exploring a new
+        restaurant, getting tacos at our favorite local taco truck El Mas Chignon, or picking up the
+        best chicken shawarma and hummus from UR Mediterranean. We love exploring the PNW and going on
+        adventures together. Some of our favorite things to do here are going on weekend trips to the
+        coast, the mountain, and central Oregon. Long drives are filled with deep conversation, lots
+        of laughs, and impromptu karaoke and serenades by Diamond. We've been fortunate enough to
+        travel together as well, across the country and international. We've learned we make a great
+        team.
+      </p>
+      <p>
+        The proposal happened on May 01, 2026, at the Oregon coast. Travis took Diamond to the
+        picturesque Elk Flats, where he got down on one knee and asked for her hand in marriage. Of
+        course, Diamond said yes. We then rounded out the weekend with lots of delicious wine and a
+        seafood boil with our local friends and family.
+      </p>
+      <p>
+        Now we can't wait to gather everyone we love in Powell Butte, Oregon, to celebrate this next
+        chapter and make even more memories with all of you. Thank you for being part of our story.
+      </p>
+      <a href="index.html" class="back-link">&larr; Back to home</a>
+    </div>
+    <div class="story-collage collage-right">
       <img src="images/gallery/gallery-20.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-21.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-22.jpg" loading="lazy" alt="" />
@@ -224,7 +319,8 @@
       <img src="images/gallery/gallery-29.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-30.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-31.jpg" loading="lazy" alt="" />
-      <img src="images/gallery/gallery-32.jpg" loading="lazy" alt="" />
+    </div>
+    <div class="story-collage collage-bottom">
       <img src="images/gallery/gallery-33.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-34.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-35.jpg" loading="lazy" alt="" />
@@ -234,57 +330,22 @@
       <img src="images/gallery/gallery-40.jpg" loading="lazy" alt="" />
       <img src="images/gallery/gallery-41.jpg" loading="lazy" alt="" />
     </div>
-  </div>
-
-  <!-- STORY -->
-  <section id="story">
-    <p>
-      We met as friends at a music festival at the Gorge Amphitheater in the summer of 2018,
-      through our college buddy, Mac. Travis was traveling in from Dallas, and Diamond was living
-      in Portland. We stayed in touch as friends for a year and a half, furthering our bond by many
-      deep conversations, having a shared sense of humor, a love for music, concerts, and the
-      outdoors.
-    </p>
-    <p>
-      Our first real date came in December of 2019, when Travis flew out to visit Diamond in
-      Portland for the first time. We grabbed banh mi at the Golden Dragon in Southeast Portland,
-      and that same weekend we went skiing together, where Travis met Diamond's family. From there,
-      we started a long distance relationship, then COVID hit. Travis finished grad school Spring
-      of 2020 and Diamond had lost her job at Adidas. Even though the circumstances weren't ideal
-      for the remainder of that year, it really pushed us closer together. Travis found a job and
-      moved to Portland in the summer of 2021, where we then made the decision to move in together
-      where we could finally start building a life together in the same place.
-    </p>
-    <p>
-      Since then, we've made Oregon our home. We love our day dates at the rose garden, where we
-      literally stop and smell the roses. We love to cook together and have even started venturing
-      into taking cooking classes in the city. When we aren't cooking, we are either exploring a new
-      restaurant, getting tacos at our favorite local taco truck El Mas Chignon, or picking up the
-      best chicken shawarma and hummus from UR Mediterranean. We love exploring the PNW and going on
-      adventures together. Some of our favorite things to do here are going on weekend trips to the
-      coast, the mountain, and central Oregon. Long drives are filled with deep conversation, lots
-      of laughs, and impromptu karaoke and serenades by Diamond. We've been fortunate enough to
-      travel together as well, across the country and international. We've learned we make a great
-      team.
-    </p>
-    <p>
-      The proposal happened on May 01, 2026, at the Oregon coast. Travis took Diamond to the
-      picturesque Elk Flats, where he got down on one knee and asked for her hand in marriage. Of
-      course, Diamond said yes. We then rounded out the weekend with lots of delicious wine and a
-      seafood boil with our local friends and family.
-    </p>
-    <p>
-      Now we can't wait to gather everyone we love in Powell Butte, Oregon, to celebrate this next
-      chapter and make even more memories with all of you. Thank you for being part of our story.
-    </p>
-    <a href="index.html" class="back-link">&larr; Back to home</a>
   </section>
 
-  <footer>
-    Made with <span>♡</span> for Diamond &amp; Travis · May 15, 2027 · Powell Butte, Oregon
-  </footer>
+  <footer>D &amp; T | May 15, 2027</footer>
 
   <script>
+    function tick() {
+      const diff = new Date('2027-05-15T16:00:00') - new Date();
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = 'Today\'s the day!';
+        return;
+      }
+      document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+    }
+    tick();
+    setInterval(tick, 60000);
+
     document.querySelectorAll('.story-collage img').forEach((img) => {
       img.addEventListener('click', (event) => {
         event.stopPropagation();

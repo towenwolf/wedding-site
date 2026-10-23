@@ -115,9 +115,12 @@ test.describe('RSVP section', () => {
   });
 });
 
-test('homepage nav links to the RSVP page', async ({ page }) => {
-  await page.addInitScript(() => sessionStorage.setItem('wedding-auth', '1'));
-  await page.goto('/index.html');
-  await page.locator('a.nav-rsvp').click();
-  await expect(page).toHaveURL(/rsvp\.html$/);
-});
+// The RSVP link stays out of the nav until invitations go out.
+for (const path of ['/index.html', '/story.html', '/travel.html', '/registry.html', '/faq.html']) {
+  test(`${path} nav hides the RSVP link`, async ({ page }) => {
+    await page.addInitScript(() => sessionStorage.setItem('wedding-auth', '1'));
+    await page.goto(path);
+    await expect(page.locator('#nav a')).toHaveCount(5);
+    await expect(page.locator('#nav a[href="rsvp.html"]')).toHaveCount(0);
+  });
+}
