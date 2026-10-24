@@ -6,9 +6,10 @@
   style.textContent =
     'html.gate-locked body > *:not(#pw-gate){display:none!important}' +
     '#pw-gate{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;' +
-    'background:#f2ecd9;font-family:Georgia,serif;padding:2rem}' +
+    'background:#f2ecd9;color:#22281d;font-family:Georgia,serif;padding:2rem}' +
     '#pw-gate canvas{image-rendering:pixelated;border:1px solid #a9895a;border-radius:2px;margin-bottom:1.5rem}' +
     '#pw-gate form{text-align:center;max-width:320px}' +
+    '#pw-gate p{color:#22281d}' +
     '#pw-gate input{font-size:1rem;padding:0.6rem 0.8rem;border:1px solid #a9895a;border-radius:2px;width:100%;margin-top:1rem}' +
     '#pw-gate button{margin-top:0.75rem;padding:0.6rem 1.5rem;background:#3f5c42;color:#f2ecd9;border:none;border-radius:2px;font-size:0.9rem;cursor:pointer}' +
     '#pw-gate .pw-error{display:none;color:#7a4426;margin-top:0.75rem;font-size:0.9rem}';
