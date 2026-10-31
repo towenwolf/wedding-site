@@ -115,12 +115,13 @@ test.describe('RSVP section', () => {
   });
 });
 
-// The RSVP link stays out of the nav until invitations go out.
+// The RSVP and Photos links stay out of the nav until they are ready to share.
 for (const path of ['/index.html', '/story.html', '/travel.html', '/things-to-do.html', '/photos.html', '/registry.html', '/faq.html']) {
-  test(`${path} nav hides the RSVP link`, async ({ page }) => {
+  test(`${path} nav hides the RSVP and Photos links`, async ({ page }) => {
     await page.addInitScript(() => sessionStorage.setItem('wedding-auth', '1'));
     await page.goto(path);
-    await expect(page.locator('#nav a')).toHaveCount(7);
+    await expect(page.locator('#nav a')).toHaveCount(6);
     await expect(page.locator('#nav a[href="rsvp.html"]')).toHaveCount(0);
+    await expect(page.locator('#nav a[href="photos.html"]')).toHaveCount(0);
   });
 }

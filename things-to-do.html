@@ -31,6 +31,9 @@
       --pine:    #2f4a3a;
       --bg:      #2f4a3a;
       --ink:     #f4e4c5;
+      --accent:   #d9a3a0; /* dusty rose, for small capital labels */
+      --ink-soft: #c3bea2; /* softer cream, for secondary details */
+      --terracotta: #d98e6a; /* for the date and city line */
     }
 
     body {
@@ -70,7 +73,8 @@
       letter-spacing: 0.25em;
       text-transform: uppercase;
     }
-    #countdown { margin-top: 0.35rem; }
+    .hero-when { color: var(--terracotta); }
+    #countdown { margin-top: 0.35rem; color: var(--accent); }
 
     nav {
       display: flex;
@@ -140,16 +144,41 @@
       line-height: 1.2;
       margin-bottom: 1rem;
     }
-    .todo-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .todo-list { display: flex; flex-direction: column; gap: 2rem; }
     .todo-item h4 {
       font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: 1rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 0.35rem;
     }
     .todo-item p { margin-bottom: 0; }
-    .todo-distance { font-style: italic; opacity: 0.8; }
+    .todo-distance { font-style: italic; color: var(--ink-soft); }
+
+    /* Around Central Oregon: photo beside each suggestion, stacked on phones */
+    .todo-item--photo {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .todo-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .todo-photo figcaption {
+      margin-top: 0.3rem;
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+    }
+    .todo-photo figcaption a { color: inherit; }
+    @media (max-width: 640px) {
+      .todo-item--photo { grid-template-columns: 1fr; gap: 0.75rem; }
+    }
 
     .back-link {
       display: inline-block;
@@ -170,6 +199,7 @@
       font-size: 0.85rem;
       border-top: 2px solid var(--ink);
       font-style: italic;
+      color: var(--ink-soft);
     }
   </style>
 </head>
@@ -185,7 +215,6 @@
       <a href="story.html">Our Story</a>
       <a href="travel.html">Travel</a>
       <a href="things-to-do.html" class="current">Things to Do</a>
-      <a href="photos.html">Photos</a>
       <a href="registry.html">Registry</a>
       <a href="faq.html">FAQ</a>
     </nav>
@@ -223,25 +252,49 @@
     <div class="todo-group">
       <h3>Around Central Oregon</h3>
       <div class="todo-list">
-        <div class="todo-item">
-          <h4>Smith Rock State Park</h4>
-          <p>Dramatic canyon hiking along the Crooked River. The Misery Ridge trail rewards you with big views.</p>
-          <p class="todo-distance">About 40 minutes from Brasada Ranch</p>
+        <div class="todo-item todo-item--photo">
+          <figure class="todo-photo">
+            <img src="images/things-to-do/smith-rock.jpg" loading="lazy" alt="Smith Rock cliffs above the Crooked River" />
+            <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Crooked_River_at_Smith_Rock_State_Park_in_Oregon_1.jpg" target="_blank" rel="noopener">Jeffhollett, CC BY-SA 4.0</a></figcaption>
+          </figure>
+          <div class="todo-text">
+            <h4>Smith Rock State Park</h4>
+            <p>Dramatic canyon hiking along the Crooked River. The Misery Ridge trail rewards you with big views.</p>
+            <p class="todo-distance">About 40 minutes from Brasada Ranch</p>
+          </div>
         </div>
-        <div class="todo-item">
-          <h4>Downtown Bend &amp; the Old Mill District</h4>
-          <p>Shops, restaurants, and riverside walking paths along the Deschutes River.</p>
-          <p class="todo-distance">About 35 minutes from Brasada Ranch</p>
+        <div class="todo-item todo-item--photo">
+          <figure class="todo-photo">
+            <img src="images/things-to-do/old-mill-district.jpg" loading="lazy" alt="The Old Mill District smokestacks along the Deschutes River in Bend" />
+            <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Old_Mill_District_2019.jpg" target="_blank" rel="noopener">Beastes35, CC BY-SA 4.0</a></figcaption>
+          </figure>
+          <div class="todo-text">
+            <h4>Downtown Bend &amp; the Old Mill District</h4>
+            <p>Shops, restaurants, and riverside walking paths along the Deschutes River.</p>
+            <p class="todo-distance">About 35 minutes from Brasada Ranch</p>
+          </div>
         </div>
-        <div class="todo-item">
-          <h4>Bend Ale Trail</h4>
-          <p>Bend is known for its breweries. Pick up a passport and sample your way around town.</p>
-          <p class="todo-distance">About 35 minutes from Brasada Ranch</p>
+        <div class="todo-item todo-item--photo">
+          <figure class="todo-photo">
+            <img src="images/things-to-do/deschutes-brewery.jpg" loading="lazy" alt="Deschutes Brewery public house in downtown Bend" />
+            <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Deschutes_Brewery_Bend_Public_House.jpg" target="_blank" rel="noopener">UpdateNerd, CC0</a></figcaption>
+          </figure>
+          <div class="todo-text">
+            <h4>Bend Ale Trail</h4>
+            <p>Bend is known for its breweries. Pick up a passport and sample your way around town.</p>
+            <p class="todo-distance">About 35 minutes from Brasada Ranch</p>
+          </div>
         </div>
-        <div class="todo-item">
-          <h4>Tumalo Falls</h4>
-          <p>A short walk to a 97 foot waterfall in the Deschutes National Forest.</p>
-          <p class="todo-distance">About an hour from Brasada Ranch</p>
+        <div class="todo-item todo-item--photo">
+          <figure class="todo-photo">
+            <img src="images/things-to-do/tumalo-falls.jpg" loading="lazy" alt="Tumalo Falls pouring into a forested canyon" />
+            <figcaption>Photo: <a href="https://commons.wikimedia.org/wiki/File:Tumalo_Falls,_Central_Oregon_(2013)_-_02.JPG" target="_blank" rel="noopener">Another Believer, CC BY-SA 3.0</a></figcaption>
+          </figure>
+          <div class="todo-text">
+            <h4>Tumalo Falls</h4>
+            <p>A short walk to a 97 foot waterfall in the Deschutes National Forest.</p>
+            <p class="todo-distance">About an hour from Brasada Ranch</p>
+          </div>
         </div>
       </div>
     </div>

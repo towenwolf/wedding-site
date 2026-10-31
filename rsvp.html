@@ -31,6 +31,9 @@
       --pine:    #2f4a3a;
       --bg:      #2f4a3a;
       --ink:     #f4e4c5;
+      --accent:   #d9a3a0; /* dusty rose, for small capital labels */
+      --ink-soft: #c3bea2; /* softer cream, for secondary details */
+      --terracotta: #d98e6a; /* for the date and city line */
     }
 
     body {
@@ -70,7 +73,8 @@
       letter-spacing: 0.25em;
       text-transform: uppercase;
     }
-    #countdown { margin-top: 0.35rem; }
+    .hero-when { color: var(--terracotta); }
+    #countdown { margin-top: 0.35rem; color: var(--accent); }
 
     nav {
       display: flex;
@@ -163,6 +167,7 @@
     .rsvp-fallback {
       margin-top: 0.75rem;
       font-size: 0.9rem;
+      color: var(--ink-soft);
     }
 
     /* RSVP FORM */
@@ -176,6 +181,7 @@
     #rsvp-name-hint {
       margin: 0;
       font-size: 0.9rem;
+      color: var(--ink-soft);
     }
     #rsvp-name {
       font-family: 'Lora', Georgia, serif;
@@ -281,7 +287,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ink);
+      color: var(--accent);
       margin-bottom: 0.4rem;
     }
     #rsvp-household .rsvp-question label.field-label { color: var(--sage); }
@@ -313,7 +319,7 @@
     .calendar-links {
       margin-top: 2.5rem;
     }
-    .calendar-links p.section-label { text-align: center; font-size: calc(0.65rem + 3pt); }
+    .calendar-links p.section-label { text-align: center; color: var(--accent); font-size: calc(0.65rem + 3pt); }
     .calendar-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -345,6 +351,7 @@
       font-size: 0.85rem;
       border-top: 2px solid var(--ink);
       font-style: italic;
+      color: var(--ink-soft);
     }
   </style>
 </head>
@@ -360,7 +367,6 @@
       <a href="story.html">Our Story</a>
       <a href="travel.html">Travel</a>
       <a href="things-to-do.html">Things to Do</a>
-      <a href="photos.html">Photos</a>
       <a href="registry.html">Registry</a>
       <a href="faq.html">FAQ</a>
       <a href="rsvp.html" class="current">RSVP</a>

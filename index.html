@@ -31,6 +31,9 @@
       --pine:    #2f4a3a;
       --bg:      #2f4a3a;
       --ink:     #f4e4c5;
+      --accent:   #d9a3a0; /* dusty rose, for small capital labels */
+      --ink-soft: #c3bea2; /* softer cream, for secondary details */
+      --terracotta: #d98e6a; /* for the date and city line */
     }
 
     body {
@@ -122,13 +125,13 @@
       gap: 0 0.75rem;
       line-height: 1.5;
     }
-    .hero-sep { color: var(--ink); }
+    .hero-sep { color: var(--terracotta); }
     .hero-date,
     .hero-location {
       font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: clamp(0.85rem, 3.5vw, 1rem);
       letter-spacing: 0.25em;
-      color: var(--ink);
+      color: var(--terracotta);
       text-transform: uppercase;
     }
 
@@ -138,7 +141,7 @@
       font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: clamp(0.85rem, 3.5vw, 1rem);
       letter-spacing: 0.25em;
-      color: var(--ink);
+      color: var(--accent);
       text-transform: uppercase;
     }
 
@@ -181,13 +184,13 @@
       color: var(--ink);
       margin-bottom: 0.75rem;
     }
-    .event p { margin-bottom: 0.3rem; font-size: 1rem; line-height: 1.6; }
+    .event p { margin-bottom: 0.3rem; font-size: 1rem; line-height: 1.6; color: var(--ink-soft); }
     .event .event-when {
       font-family: 'VS John Muir Sans Wide', sans-serif;
       font-size: 0.8rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--ink);
+      color: var(--accent);
       margin-bottom: 0.6rem;
     }
     /* Wedding day schedule: times on the left, event names on the right */
@@ -220,7 +223,7 @@
     }
     .event-time {
       text-align: right;
-      color: var(--ink);
+      color: var(--ink-soft);
       line-height: 1.6;
     }
     .event-part {
@@ -229,7 +232,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--ink);
+      color: var(--accent);
     }
     .event .event-attire { margin-top: 0.75rem; font-style: italic; }
 
@@ -258,7 +261,7 @@
       text-align: center;
       padding: 3rem 2rem;
       font-size: 0.85rem;
-      color: var(--ink);
+      color: var(--ink-soft);
       border-top: 2px solid var(--ink);
       font-style: italic;
     }
@@ -276,7 +279,6 @@
       <a href="story.html">Our Story</a>
       <a href="travel.html">Travel</a>
       <a href="things-to-do.html">Things to Do</a>
-      <a href="photos.html">Photos</a>
       <a href="registry.html">Registry</a>
       <a href="faq.html">FAQ</a>
     </nav>
@@ -301,13 +303,13 @@
       <div class="event">
         <h3>Wedding Day</h3>
         <p class="event-when">Saturday, May 15, 2027</p>
-        <p>Brasada Ranch</p>
+        <p>Brasada Ranch, The Barn</p>
         <p>4:00 to 11:00 PM</p>
         <p class="event-attire">Attire: Formal</p>
         <ul class="event-schedule">
           <li><span class="event-time">4:00 PM</span><span class="event-part">Ceremony</span></li>
           <li><span class="event-time">4:30 to 5:30 PM</span><span class="event-part">Cocktail Hour</span></li>
-          <li><span class="event-time">5:45 PM</span><span class="event-part">Reception</span></li>
+          <li><span class="event-time">5:45 to 11:00 PM</span><span class="event-part">Reception &amp; Dance</span></li>
         </ul>
       </div>
     </div>
