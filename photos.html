@@ -137,18 +137,28 @@
 
     /* PHOTOS — engagement gallery */
     #photos { max-width: 1100px; }
+    /* Masonry so portrait and landscape photos keep their shape. Without
+       script this falls back to CSS columns; the script below lays photos
+       out left to right instead, so they read in order across each row. */
     .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
-      gap: 1rem;
+      columns: 3 280px;
+      column-gap: 1rem;
     }
+    .photo-grid.is-laid-out {
+      columns: auto;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .photo-col { flex: 1; min-width: 0; }
     .photo-grid img {
       display: block;
       width: 100%;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
+      height: auto;
+      margin-bottom: 1rem;
+      break-inside: avoid;
     }
-    .photo-credit { text-align: center; font-style: italic; margin-top: 1.5rem; }
+    .photo-credit { text-align: center; font-style: italic; margin-top: 0.5rem; color: var(--ink-soft); }
 
     .back-link {
       display: inline-block;
@@ -185,7 +195,9 @@
       <a href="story.html">Our Story</a>
       <a href="travel.html">Travel</a>
       <a href="things-to-do.html">Things to Do</a>
+      <a href="photos.html" class="current">Photos</a>
       <a href="registry.html">Registry</a>
+      <a href="rsvp.html">RSVP</a>
       <a href="faq.html">FAQ</a>
     </nav>
   </header>
@@ -198,15 +210,66 @@
   <!-- PHOTOS -->
   <section id="photos">
     <div class="photo-grid">
-      <img src="images/engagement/engagement-01.jpg" loading="lazy" alt="Diamond and Travis holding hands on a grassy cliff above the Oregon coast" />
-      <img src="images/engagement/engagement-02.jpg" loading="lazy" alt="Diamond looking back at Travis as they walk along the Oregon coast cliffs" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0029.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0059.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0098.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0128.jpg" width="1600" height="1067" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0130.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0172.jpg" width="1600" height="1067" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0185.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0211.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0213.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0217.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0277.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0278.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0308.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0320.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0345.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0390.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0463.jpg" width="1600" height="1067" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-TD-0483.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0498.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0509.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0562.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0567.jpg" width="1067" height="1600" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
+      <img src="images/engagement/Elk-Flats-Engagement-0579.jpg" width="1600" height="1067" loading="lazy" alt="Diamond and Travis on the Oregon coast" />
     </div>
+    <p class="photo-credit">Photos by Katy Weaver Photography</p>
     <a href="index.html" class="back-link">&larr; Back to home</a>
   </section>
 
   <footer>D &amp; T | May 15, 2027</footer>
 
   <script>
+    // Deal photos into columns, each going to the currently shortest column,
+    // so the gallery reads left to right in filename order.
+    (function () {
+      const grid = document.querySelector('.photo-grid');
+      const photos = [...grid.querySelectorAll('img')];
+      let lastCount = 0;
+      function layout() {
+        const width = grid.clientWidth;
+        const count = width >= 860 ? 3 : width >= 560 ? 2 : 1;
+        if (count === lastCount) return;
+        lastCount = count;
+        const cols = Array.from({ length: count }, () => {
+          const col = document.createElement('div');
+          col.className = 'photo-col';
+          return col;
+        });
+        const heights = new Array(count).fill(0);
+        photos.forEach((img) => {
+          const i = heights.indexOf(Math.min(...heights));
+          cols[i].appendChild(img);
+          heights[i] += img.getAttribute('height') / img.getAttribute('width');
+        });
+        grid.replaceChildren(...cols);
+        grid.classList.add('is-laid-out');
+      }
+      layout();
+      window.addEventListener('resize', layout);
+    })();
+
     function tick() {
       const diff = new Date('2027-05-15T16:00:00') - new Date();
       if (diff <= 0) {

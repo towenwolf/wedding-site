@@ -137,6 +137,16 @@
       max-width: 560px;
       margin: 2rem auto;
     }
+    /* Same pixel wolf as the password screen, scaled up with crisp pixels */
+    .rsvp-wolf {
+      display: block;
+      width: min(420px, 100%);
+      height: auto;
+      margin: 0 auto;
+      image-rendering: pixelated;
+      border: 1px solid var(--tan);
+      border-radius: 2px;
+    }
     #rsvp { padding-top: 1.5rem; }
 
     /* RSVP */
@@ -178,6 +188,7 @@
       flex-direction: column;
       gap: 0.75rem;
     }
+    #rsvp-search[hidden] { display: none; }
     #rsvp-name-hint {
       margin: 0;
       font-size: 0.9rem;
@@ -315,35 +326,6 @@
     }
     .back-link:hover { opacity: 0.7; }
 
-    /* ADD TO CALENDAR */
-    .calendar-links {
-      margin-top: 2.5rem;
-    }
-    .calendar-links p.section-label { text-align: center; color: var(--accent); font-size: calc(0.65rem + 3pt); }
-    .calendar-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-    }
-    .calendar-buttons a {
-      font-family: 'VS John Muir Sans Wide', sans-serif;
-      font-weight: 600;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink);
-      text-decoration: none;
-      border: 1.5px solid var(--ink);
-      border-radius: 2px;
-      padding: 0.6rem 1.2rem;
-      transition: background 0.2s, color 0.2s;
-    }
-    .calendar-buttons a:hover {
-      background: var(--ink);
-      color: var(--bg);
-    }
-
     /* FOOTER */
     footer {
       text-align: center;
@@ -367,22 +349,23 @@
       <a href="story.html">Our Story</a>
       <a href="travel.html">Travel</a>
       <a href="things-to-do.html">Things to Do</a>
+      <a href="photos.html">Photos</a>
       <a href="registry.html">Registry</a>
-      <a href="faq.html">FAQ</a>
       <a href="rsvp.html" class="current">RSVP</a>
+      <a href="faq.html">FAQ</a>
     </nav>
   </header>
 
   <!-- RSVP HEADER -->
   <section id="rsvp-header">
     <h2>RSVP</h2>
-    <p>Already know you'll be joining us? You're welcome to RSVP early!</p>
-    <p>Still figuring things out? No worries. You'll have another chance to RSVP when formal invitations are sent.</p>
+    <p>We're putting the finishing touches on our invitations and will be sending them out soon! Once yours arrives, come back here to RSVP.</p>
+    <canvas id="rsvp-wolf" class="rsvp-wolf" width="280" height="90" role="img" aria-label="A pixel wolf wandering past mailboxes as envelopes drift by"></canvas>
   </section>
 
   <!-- RSVP -->
   <section id="rsvp">
-    <form id="rsvp-search">
+    <form id="rsvp-search" hidden>
       <p id="rsvp-name-hint">Enter your full name, first and last. A first name on its own won't find your invite.</p>
       <input id="rsvp-name" type="text" placeholder="Type your first and last name" autocomplete="name" required />
       <button type="submit" class="rsvp-cta" id="rsvp-search-btn">Find My Invite</button>
@@ -392,14 +375,6 @@
     <form id="rsvp-household" hidden></form>
 
     <a href="index.html" class="back-link">&larr; Back to home</a>
-
-    <div class="calendar-links">
-      <p class="section-label">Save the date</p>
-      <div class="calendar-buttons">
-        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Diamond+%26+Travis%27s+Wedding&dates=20270515T230000Z%2F20270516T060000Z&details=Ceremony+at+4%3A00+PM%2C+reception+to+follow+6%3A00+PM+%E2%80%93+11%3A00+PM.+Details+at+https%3A%2F%2Fhowlwewed.com&location=Powell+Butte%2C+Oregon" target="_blank" rel="noopener">Google Calendar</a>
-        <a href="wedding.ics">Apple / Outlook (.ics)</a>
-      </div>
-    </div>
   </section>
 
   <footer>D &amp; T | May 15, 2027</footer>
@@ -407,6 +382,9 @@
   <script>
     // Replace with the /exec URL from the Apps Script Web App deployment
     // (see apps-script/Code.gs).
+    // Flip to true once invitations are out to show the RSVP form.
+    const RSVP_OPEN = false;
+
     const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwE1XCJR8XJzqaN4WtMN0q8QFj6h1WSSukIXNX1unr9CvqY5lNgDsC2lt5U5axS-aXa/exec';
 
     const searchForm = document.getElementById('rsvp-search');
@@ -414,6 +392,9 @@
     const nameInput = document.getElementById('rsvp-name');
     const statusEl = document.getElementById('rsvp-status');
     const householdForm = document.getElementById('rsvp-household');
+
+    searchForm.hidden = !RSVP_OPEN;
+    window.startWolfScene(document.getElementById('rsvp-wolf'), { props: 'mail' });
 
     searchForm.addEventListener('submit', async (event) => {
       event.preventDefault();

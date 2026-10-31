@@ -2,7 +2,9 @@ const { test, expect } = require('@playwright/test');
 
 const ENDPOINT_PATTERN = /script\.google\.com\/macros\/s\/.*\/exec/;
 
-test.describe('RSVP section', () => {
+// RSVPs are closed until invitations go out (RSVP_OPEN in rsvp.html).
+// Change this to test.describe when RSVP_OPEN is flipped to true.
+test.describe.skip('RSVP section', () => {
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => sessionStorage.setItem('wedding-auth', '1'));
     await page.goto('/rsvp.html');
@@ -115,13 +117,32 @@ test.describe('RSVP section', () => {
   });
 });
 
-// The RSVP and Photos links stay out of the nav until they are ready to share.
-for (const path of ['/index.html', '/story.html', '/travel.html', '/things-to-do.html', '/photos.html', '/registry.html', '/faq.html']) {
-  test(`${path} nav hides the RSVP and Photos links`, async ({ page }) => {
+test('RSVP form stays hidden until invitations go out', async ({ page }) => {
+  await page.addInitScript(() => sessionStorage.setItem('wedding-auth', '1'));
+  await page.goto('/rsvp.html');
+  await expect(page.locator('#rsvp-header')).toContainText('sending them out soon');
+  await expect(page.locator('#rsvp-search')).toBeHidden();
+  await expect(page.locator('#rsvp-household')).toBeHidden();
+});
+
+// Every page shares the same nav, with the current page marked.
+const NAV_PAGES = ['index.html', 'story.html', 'travel.html', 'things-to-do.html', 'photos.html', 'registry.html', 'rsvp.html', 'faq.html'];
+for (const href of NAV_PAGES) {
+  test(`${href} nav lists every page`, async ({ page }) => {
     await page.addInitScript(() => sessionStorage.setItem('wedding-auth', '1'));
-    await page.goto(path);
-    await expect(page.locator('#nav a')).toHaveCount(6);
-    await expect(page.locator('#nav a[href="rsvp.html"]')).toHaveCount(0);
-    await expect(page.locator('#nav a[href="photos.html"]')).toHaveCount(0);
+    await page.goto(`/${href}`);
+    const links = page.locator('#nav a');
+    await expect(links).toHaveCount(NAV_PAGES.length);
+    for (const [i, target] of NAV_PAGES.entries()) {
+      await expect(links.nth(i)).toHaveAttribute('href', target);
+    }
+    await expect(page.locator('#nav a.current')).toHaveAttribute('href', href);
   });
 }
+
+test('homepage nav links to the RSVP page', async ({ page }) => {
+  await page.addInitScript(() => sessionStorage.setItem('wedding-auth', '1'));
+  await page.goto('/index.html');
+  await page.locator('#nav a[href="rsvp.html"]').click();
+  await expect(page).toHaveURL(/rsvp\.html$/);
+});

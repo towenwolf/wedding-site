@@ -15,6 +15,9 @@
     '#pw-gate .pw-error{display:none;color:#7a4426;margin-top:0.75rem;font-size:0.9rem}';
   document.head.appendChild(style);
 
+  // Shared with other pages (the RSVP page shows the same wolf).
+  window.startWolfScene = startWolfScene;
+
   if (sessionStorage.getItem(AUTH_KEY) === '1') return;
 
   document.documentElement.classList.add('gate-locked');
@@ -39,7 +42,7 @@
         sessionStorage.setItem(AUTH_KEY, '1');
         document.documentElement.classList.remove('gate-locked');
         overlay.remove();
-        stopWolfScene();
+        stopGateWolf();
       } else {
         overlay.querySelector('.pw-error').style.display = 'block';
         input.value = '';
@@ -47,17 +50,14 @@
       }
     });
 
-    startWolfScene(overlay.querySelector('#wolf-canvas'));
+    var stopGateWolf = startWolfScene(overlay.querySelector('#wolf-canvas'));
   });
 
   // --- whimsical pixel wolf, wandering the desert while you type the password ---
-  var wolfTimer = null;
-
-  function stopWolfScene() {
-    if (wolfTimer) clearInterval(wolfTimer);
-  }
-
-  function startWolfScene(canvas) {
+  // Returns a function that stops this scene's animation.
+  // options.props: 'cactus' (default) or 'mail' for mailboxes and drifting envelopes.
+  function startWolfScene(canvas, options) {
+    var props = (options && options.props) || 'cactus';
     var ctx = canvas.getContext('2d');
     var U = 3; // pixel-art unit size in css px
     var cssW = canvas.width;
@@ -73,7 +73,13 @@
       cactusShade: '#2f4a3a',
       wolf: '#7a7a7a',
       wolfShade: '#57544a',
-      dark: '#22281d'
+      dark: '#22281d',
+      post: '#7a4426',
+      mailbox: '#5d6b7a',
+      mailboxShade: '#47525e',
+      flag: '#b5473a',
+      paper: '#fffaf0',
+      paperLine: '#a9895a'
     };
 
     ctx.imageSmoothingEnabled = false;
@@ -95,6 +101,35 @@
       px(gx, gy, 1, 1, COLORS.cactusShade);
     }
 
+    function drawMailbox(gx) {
+      var gy = groundRow;
+      px(gx, gy - 5, 1, 5, COLORS.post);
+      px(gx - 2, gy - 8, 6, 3, COLORS.mailbox);
+      px(gx - 1, gy - 9, 4, 1, COLORS.mailbox);
+      px(gx - 2, gy - 8, 1, 3, COLORS.mailboxShade);
+      px(gx + 4, gy - 10, 1, 4, COLORS.flag);
+      px(gx + 5, gy - 10, 1, 1, COLORS.flag);
+      px(gx - 4, gy - 8, 2, 2, COLORS.paper);
+    }
+
+    // 7x5 outlined envelope with a V flap
+    function drawEnvelope(gx, gy) {
+      px(gx, gy, 7, 5, COLORS.paperLine);
+      px(gx + 1, gy + 1, 5, 3, COLORS.paper);
+      px(gx + 1, gy + 1, 1, 1, COLORS.paperLine);
+      px(gx + 5, gy + 1, 1, 1, COLORS.paperLine);
+      px(gx + 2, gy + 2, 1, 1, COLORS.paperLine);
+      px(gx + 4, gy + 2, 1, 1, COLORS.paperLine);
+      px(gx + 3, gy + 3, 1, 1, COLORS.paperLine);
+    }
+
+    var envelopes = [
+      { x: 18, y: 4, phase: 0 },
+      { x: 48, y: 8, phase: 2 },
+      { x: 74, y: 3, phase: 4 }
+    ];
+    var frame = 0;
+
     function drawScene() {
       ctx.clearRect(0, 0, cssW, cssH);
       ctx.fillStyle = COLORS.sky;
@@ -108,8 +143,17 @@
       ctx.fillStyle = COLORS.duneNear;
       ctx.fillRect(0, groundRow * U, cssW, cssH - groundRow * U);
 
-      drawCactus(6);
-      drawCactus(Math.floor(cssW / U) - 10);
+      if (props === 'mail') {
+        envelopes.forEach(function (e) {
+          var bob = Math.round(Math.sin((frame + e.phase * 4) / 6));
+          drawEnvelope(Math.round(e.x), e.y + bob);
+        });
+        drawMailbox(8);
+        drawMailbox(Math.floor(cssW / U) - 12);
+      } else {
+        drawCactus(6);
+        drawCactus(Math.floor(cssW / U) - 10);
+      }
     }
 
     // wolf drawn in a local 16x9 grid, nose at the right (facing right)
@@ -163,6 +207,11 @@
     var TICK_MS = 100;
 
     function tick() {
+      frame += 1;
+      envelopes.forEach(function (e) {
+        e.x -= 0.25;
+        if (e.x < -8) e.x = cssW / U + 2;
+      });
       state.modeTimer -= TICK_MS;
       if (state.modeTimer <= 0) {
         state.mode = state.mode === 'walk' ? 'sniff' : 'walk';
@@ -185,9 +234,10 @@
     if (reduceMotion) {
       drawScene();
       drawWolf(Math.floor(cssW / U / 2 - SPRITE_W / 2), 0, 0);
-    } else {
-      wolfTimer = setInterval(tick, TICK_MS);
-      tick();
+      return function () {};
     }
+    var timer = setInterval(tick, TICK_MS);
+    tick();
+    return function () { clearInterval(timer); };
   }
 })();
